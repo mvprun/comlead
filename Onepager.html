@@ -455,7 +455,8 @@
       background: #edf2f8;
       overflow: hidden;
     }
-    .economics > summary { padding: 20px 24px; font-size: 14px; }
+    .economics > summary { padding: 20px 24px; font-size: 18px; line-height: 1.4; color: #35577f; background: transparent; }
+    .economics > summary .chevron { width: 14px; height: 14px; }
     .economics[open] > summary { border-bottom: 1px solid var(--line); }
     .economics-body { padding: 24px; }
     .economics-inputs { display: grid; grid-template-columns: 1fr 1.5fr .8fr; gap: 20px; }
@@ -527,7 +528,7 @@
     .economics-note { margin-top: 12px; font-size: 11px; color: var(--muted); line-height: 1.6; max-width: 100ch; }
     .workflow { margin-top: 32px; padding: 28px 0; border-bottom: 1px solid var(--line); }
     .workflow > h2 { font: 400 30px/1.25 var(--serif); letter-spacing: -.025em; }
-    .workflow-steps { display: grid; grid-template-columns: 1fr 1fr; column-gap: 40px; row-gap: 24px; margin: 24px 0 0; padding: 0; list-style: none; counter-reset: workflow; }
+    .workflow-steps { display: grid; grid-template-columns: 1fr; gap: 24px; max-width: 800px; margin: 24px 0 0; padding: 0; list-style: none; counter-reset: workflow; }
     .workflow-steps li { position: relative; padding-left: 40px; counter-increment: workflow; }
     .workflow-steps li::before { content: counter(workflow); position: absolute; left: 0; top: 0; display: grid; place-items: center; width: 26px; height: 26px; border: 1px solid #c4d4e5; border-radius: 50%; color: #35577f; font-size: 12px; }
     .workflow-steps h3 { font-size: 13px; line-height: 1.5; margin-bottom: 8px; }
@@ -542,7 +543,7 @@
       .funnel-head, .funnel-row { grid-template-columns: 120px minmax(0, 1fr) 120px 140px; gap: 12px; }
     }
     @media (max-width: 767px) {
-      .economics > summary { padding: 20px 16px; font-size: 13px; }
+      .economics > summary { padding: 20px 16px; font-size: 18px; }
       .economics-body { padding: 16px; }
       .economics-inputs, .economics-money { grid-template-columns: 1fr; gap: 16px; }
       .economics-inputs > label:last-child { max-width: none; }
@@ -595,7 +596,7 @@
       .forecast-row { display: flex; }
       .forecast-row dt { max-width: 58%; }
       .forecast-row dd { margin-top: 0; font-size: 23pt; }
-      .workflow-steps { grid-template-columns: 1fr 1fr; gap: 20px; }
+      .workflow-steps { grid-template-columns: 1fr; gap: 20px; }
       .workflow-steps li { break-inside: avoid; }
       .workflow-steps p { font-size: 9pt; }
     }
@@ -623,7 +624,7 @@
     <div class="wrap">
       <p class="eyebrow">Рост по требованию</p>
       <h1 id="page-title">Пакеты встреч для выхода <span class="nowrap">на новых клиентов.</span></h1>
-      <p class="hero-lead">Согласуем профиль покупателя (ICP), найдём нужных людей и организуем встречи. Дальше продажи ведёт ваша команда или мы — до первой оплаты.</p>
+      <p class="hero-lead">Согласно согласованному профилю покупателя (ICP), найдём нужных людей и организуем встречи. Дальше продажи ведёт ваша команда или мы — до первой оплаты.</p>
       <p class="hero-terms">Оплачивайте нужный объём встреч — от 10 за пакет. Покупайте следующий, когда нужны новые потенциальные клиенты. Обязательной ежемесячной оплаты нет.</p>
       <div class="hero-actions">
         <a class="button" href="https://calink.ru/ComLead/30min" target="_blank" rel="noopener noreferrer">
@@ -669,7 +670,7 @@
         <dl class="plan-fields">
           <div class="plan-field"><dt class="field-label">Что получаете</dt> <dd>Весь цикл: от первого касания до поступления денег на ваш счёт</dd></div>
           <div class="plan-field volume"><dt class="field-label">Объём</dt> <dd>От 10&nbsp;первичных встреч + финальные по факту</dd></div>
-          <div class="plan-field plan-price"><dt class="field-label">Стоимость</dt> <dd><span class="price">214&nbsp;000&nbsp;₽</span> <a class="price-caption" href="#commission">по сценарию 10 → 3 → 1</a><p class="price-terms">Пакет первичных встреч — на старте. Финальные встречи и комиссия — по факту.</p></dd></div>
+          <div class="plan-field plan-price"><dt class="field-label">Стоимость</dt> <dd><span class="price">272&nbsp;000&nbsp;₽</span> <a class="price-caption" id="close-plan-example" href="#economics">по базовому сценарию 10 → 4 → 2</a><p class="price-terms">Пакет первичных встреч — на старте. Финальные встречи и комиссия — по факту.</p></dd></div>
         </dl>
       </article>
     </section>
@@ -716,17 +717,17 @@
           <div class="scenario-controls">
             <span id="scenario-control-label">Сценарий расчёта</span>
             <div class="scenario-switch" role="group" aria-labelledby="scenario-control-label">
-              <button type="button" id="scenario-base" aria-pressed="true">Базовый · 10 → 3 → 1</button>
-              <button type="button" id="scenario-cautious" aria-pressed="false">Осторожный · 10 → 2 → 0,5</button>
+              <button type="button" id="scenario-base" aria-pressed="true">Базовый · 10 → 4 → 2</button>
+              <button type="button" id="scenario-cautious" aria-pressed="false">Осторожный · 10 → 3 → 1</button>
             </div>
-            <p id="scenario-explanation">На каждые 10 встреч — 3 финальные и 1 первая оплата.</p>
+            <p id="scenario-explanation">На каждые 10 встреч — 4 финальные и 2 первые оплаты.</p>
           </div>
         </form>
         <p id="calc-error" class="calc-error" role="alert" hidden></p>
         <div id="economics-output">
           <div class="funnel-heading">
             <div><h2>Прогноз по сценарию</h2><p id="funnel-context">Сделки закрывает ваша команда</p></div>
-            <span id="funnel-summary" class="funnel-summary">10 → 3 → 1</span>
+            <span id="funnel-summary" class="funnel-summary">10 → 4 → 2</span>
           </div>
           <div class="funnel-table" role="table" aria-label="Этапы воронки и расходы на ComLead">
             <div class="funnel-head" role="row">
@@ -739,13 +740,13 @@
               <div class="funnel-cost" role="cell"><span class="mobile-metric-label">ComLead</span><strong id="flow-first-cost">70 000 ₽</strong></div>
             </div>
             <div class="funnel-row" role="row">
-              <div class="funnel-volume" role="cell"><small id="flow-final-conversion">↓ 30%</small><div class="funnel-shape shape-final"><strong id="flow-final-count">3</strong><span id="flow-final-unit">встречи</span></div></div>
+              <div class="funnel-volume" role="cell"><small id="flow-final-conversion">↓ 40%</small><div class="funnel-shape shape-final"><strong id="flow-final-count">4</strong><span id="flow-final-unit">встречи</span></div></div>
               <div class="funnel-stage" role="cell"><strong>Финальные встречи · BANT</strong><span id="flow-final-note">Ваша команда согласует бюджет и оформление закупки</span></div>
               <div class="funnel-rate" role="cell"><span class="mobile-metric-label">Ставка</span><strong id="flow-final-rate">—</strong><span id="flow-final-rate-unit">Ваша команда</span></div>
               <div class="funnel-cost" role="cell"><span class="mobile-metric-label">ComLead</span><strong id="flow-final-cost">—</strong></div>
             </div>
             <div class="funnel-row" role="row">
-              <div class="funnel-volume" role="cell"><small id="flow-paid-conversion">↓ 33,3%</small><div class="funnel-shape shape-paid"><strong id="flow-paid-count">1</strong><span id="flow-paid-unit">оплата</span></div></div>
+              <div class="funnel-volume" role="cell"><small id="flow-paid-conversion">↓ 50%</small><div class="funnel-shape shape-paid"><strong id="flow-paid-count">2</strong><span id="flow-paid-unit">оплаты</span></div></div>
               <div class="funnel-stage" role="cell"><strong id="flow-paid-label">Закрытие сделок</strong><span id="flow-paid-note">До первой оплаты ведёт ваша команда</span></div>
               <div class="funnel-rate" role="cell"><span class="mobile-metric-label">Ставка</span><strong id="flow-paid-rate">—</strong><span id="flow-paid-rate-unit">Ваша команда</span></div>
               <div class="funnel-cost" role="cell"><span class="mobile-metric-label">ComLead</span><strong id="flow-paid-cost">—</strong></div>
@@ -754,13 +755,14 @@
           <section class="forecast" aria-labelledby="forecast-title" aria-live="polite" aria-atomic="true">
             <h3 id="forecast-title">Итого по прогнозу</h3>
             <dl>
-              <div class="forecast-row"><dt>Первые оплаты<small id="first-revenue-formula">1 клиент × 500 000 ₽</small></dt><dd id="first-revenue">500 000 ₽</dd></div>
+              <div class="forecast-row"><dt>Первые оплаты<small id="first-revenue-formula">2 клиента × 500 000 ₽</small></dt><dd id="first-revenue">1 000 000 ₽</dd></div>
               <div class="forecast-row forecast-expenses"><dt>Расходы на ComLead<small id="expense-description">За 10 назначенных встреч</small></dt><dd id="calc-total">70 000 ₽</dd></div>
-              <div class="forecast-row forecast-net"><dt>Выручка за 12 месяцев за вычетом расходов на ComLead<small id="year-revenue-formula">1 клиент × 1 000 000 ₽ − 70 000 ₽</small></dt><dd id="year-revenue">930 000 ₽</dd></div>
+              <div class="forecast-row forecast-net"><dt>Выручка за 12 месяцев за вычетом расходов на ComLead<small id="year-revenue-formula">2 клиента × 1 000 000 ₽ − 70 000 ₽</small></dt><dd id="year-revenue">1 930 000 ₽</dd></div>
             </dl>
-            <p class="forecast-share">Доля затрат в годовой выручке <strong id="annual-share">7%</strong></p>
+            <p class="forecast-share">Доля затрат в годовой выручке <strong id="annual-share">3,5%</strong></p>
           </section>
           <div class="payment-summary"><p id="budget-timing">На старте — 70 000 ₽ за 10 встреч.</p><p><strong>Разработка стратегии — 0 ₽.</strong> Входит в оплату первого пакета встреч.</p></div>
+          <p class="economics-note">В формате «Закрытие» комиссия — 40&nbsp;000&nbsp;₽ с первой оплаты каждого покупателя или 1,5% от неё, если эта сумма выше. Повторные платежи не входят в расчёт комиссии.</p>
           <p class="economics-note">Расчёт по сценарию. Фактическое число сделок и сроки оплаты зависят от продаж. Финальные встречи проходят с частью тех же покупателей.</p>
           <p class="economics-note">Годовая выручка уже включает первые оплаты. Расходы вашей команды, себестоимость продукта и остальные расходы в расчёт не входят.</p>
         </div>
@@ -799,10 +801,8 @@
               <p class="detail-sub">Критерии для назначенной и проведённой первичной встречи согласуем до старта.</p>
               <ul>
                 <li><strong>Компания:</strong> размер, отрасль и география соответствуют профилю.</li>
-                <li><strong>Совместимость:</strong> есть инфраструктура, команда или другие условия для применения продукта.</li>
                 <li><strong>Контакт:</strong> принимает решение о покупке или влияет на него и может подключить руководителя.</li>
                 <li><strong>Интерес:</strong> понимает цель разговора; тема и время согласованы.</li>
-                <li><strong>Задача:</strong> У компании есть актуальная задача, которую может решить ваш продукт.</li>
                 <li><strong>Нет стоп-факторов:</strong> конкурент, банкротство или компания из согласованного списка исключений.</li>
               </ul>
               <p class="criteria-note">Назначение само по себе не считается проведённой встречей. Неявки и встречи вне профиля заменяем бесплатно.</p>
@@ -845,38 +845,6 @@
         </div>
       </details>
 
-      <details class="details" id="commission">
-        <summary>Комиссия и пример полного расчёта <span class="chevron" aria-hidden="true"></span></summary>
-        <div class="details-body">
-          <div class="commission-copy">
-            <p><strong>Комиссия — только с первой оплаты.</strong> 40&nbsp;000&nbsp;₽ с одной первой оплаты или 1,5% от неё, если эта сумма выше. Повторные платежи не входят в расчёт комиссии.</p>
-            <p>Например, с первого чека 500&nbsp;000&nbsp;₽ комиссия — 40&nbsp;000&nbsp;₽; с чека 3&nbsp;000&nbsp;000&nbsp;₽ — 45&nbsp;000&nbsp;₽.</p>
-          </div>
-          <section class="calculation" aria-labelledby="calculation-title">
-            <h3 id="calculation-title">Пример полного цикла для малого бизнеса</h3>
-            <p class="scenario-description">Первый чек — 500&nbsp;000&nbsp;₽</p>
-            <p class="scenario-flow" aria-label="10 первичных встреч, 3 финальные встречи, 1 оплата">10 → 3 → 1</p>
-            <p class="scenario-description">Первичные → финальные → оплата</p>
-            <table class="calc">
-              <caption class="sr-only">Расчёт расходов по сценарию 10 → 3 → 1</caption>
-              <thead class="sr-only"><tr><th scope="col">Этап</th><th scope="col">Количество и ставка</th><th scope="col">Расходы на ComLead</th></tr></thead>
-              <tbody>
-                <tr><th scope="row">Первичные</th><td>10 × 12&nbsp;000&nbsp;₽</td><td>120&nbsp;000&nbsp;₽</td></tr>
-                <tr><th scope="row">Финальные</th><td>3 × 18&nbsp;000&nbsp;₽</td><td>54&nbsp;000&nbsp;₽</td></tr>
-                <tr><th scope="row">Комиссия</th><td>1 первая оплата</td><td>40&nbsp;000&nbsp;₽</td></tr>
-              </tbody>
-            </table>
-            <section class="scenario-summary" aria-labelledby="scenario-summary-title">
-              <h4 id="scenario-summary-title">Итого по сценарию</h4>
-              <dl class="scenario-totals">
-                <div class="scenario-metric scenario-metric--revenue"><dt>Получено от покупателя</dt><dd>500&nbsp;000&nbsp;₽</dd></div>
-                <div class="scenario-metric"><dt>Потрачено на ComLead</dt><dd>214&nbsp;000&nbsp;₽</dd></div>
-              </dl>
-            </section>
-            <p class="scenario-note">Пример расчёта. Фактический итог зависит от числа встреч и оплат.</p>
-          </section>
-        </div>
-      </details>
     </div>
 
     <section class="workflow" id="workflow" aria-labelledby="workflow-title">
@@ -981,9 +949,9 @@
   const byId = id => document.getElementById(id);
   const rates = {
     small: { appointed: 7000, primary: 12000, final: 18000, minLtv: 1000000, minCheck: 100000 },
-    medium: { appointed: 10000, primary: 17000, final: 27000, minLtv: 1500000, minCheck: 100000 },
-    large: { appointed: 14000, primary: 24000, final: 41000, minLtv: 2000000, minCheck: 100000 },
-    enterprise: { appointed: 20000, primary: 34000, final: 61000, minLtv: 3000000, minCheck: 500000 }
+    medium: { appointed: 10000, primary: 17000, final: 27000, minLtv: 1000000, minCheck: 100000 },
+    large: { appointed: 14000, primary: 24000, final: 41000, minLtv: 1000000, minCheck: 100000 },
+    enterprise: { appointed: 20000, primary: 34000, final: 61000, minLtv: 1000000, minCheck: 500000 }
   };
   const rub = value => new Intl.NumberFormat('ru-RU', { maximumFractionDigits: 0 }).format(value) + ' ₽';
   const percent = value => new Intl.NumberFormat('ru-RU', { maximumFractionDigits: 1 }).format(value) + '%';
@@ -1048,7 +1016,7 @@
 
     const warnings = {
       'check-warning': rate && checkValid && check < rate.minCheck ? 'Ниже ориентира для выбранного сегмента — ' + rub(rate.minCheck) + '. Обсудим экономику и формат.' : '',
-      'ltv-warning': checkValid && ltv > 0 && ltv < check ? 'Годовой LTV включает первый чек и не может быть меньше него.' : rate && ltvValid && ltv < rate.minLtv ? 'Ниже целевого LTV для выбранного сегмента — ' + rub(rate.minLtv) + ' за год. Обсудим экономику.' : ''
+      'ltv-warning': checkValid && ltv > 0 && ltv < check ? 'Годовой LTV включает первый чек и не может быть меньше него.' : rate && ltvValid && ltv < rate.minLtv ? 'Ниже целевого годового LTV — ' + rub(rate.minLtv) + '. Обсудим экономику.' : ''
     };
     for (const [id, message] of Object.entries(warnings)) {
       set(id, message);
@@ -1067,8 +1035,8 @@
     if (error) return;
 
     const packages = meetings / 10;
-    const finals = packages * (scenario === 'base' ? 3 : 2);
-    const deals = packages * (scenario === 'base' ? 1 : 0.5);
+    const finals = packages * (scenario === 'base' ? 4 : 3);
+    const deals = packages * (scenario === 'base' ? 2 : 1);
     const unit = format === 'appointed' ? rate.appointed : rate.primary;
     const base = meetings * unit;
     const feePerDeal = commissionAmount(check);
@@ -1117,12 +1085,20 @@
     scenario = value;
     byId('scenario-base').setAttribute('aria-pressed', String(value === 'base'));
     byId('scenario-cautious').setAttribute('aria-pressed', String(value === 'cautious'));
-    set('scenario-explanation', value === 'base' ? 'На каждые 10 встреч — 3 финальные и 1 первая оплата.' : 'На каждые 10 встреч — 2 финальные и 0,5 оплаты. Это среднее ожидание — одна оплата на 20 встреч.');
+    set('scenario-explanation', value === 'base' ? 'На каждые 10 встреч — 4 финальные и 2 первые оплаты.' : 'На каждые 10 встреч — 3 финальные и 1 первая оплата.');
     calculate();
   }
   byId('economics-form').addEventListener('submit', event => event.preventDefault());
   byId('scenario-base').addEventListener('click', () => selectScenario('base'));
   byId('scenario-cautious').addEventListener('click', () => selectScenario('cautious'));
+  byId('close-plan-example').addEventListener('click', () => {
+    byId('calc-format').value = 'full';
+    byId('calc-segment').value = 'small';
+    byId('calc-meetings').value = '10';
+    byId('calc-check').value = '500 000';
+    byId('calc-ltv').value = '1 000 000';
+    selectScenario('base');
+  });
   document.querySelectorAll('.economics-form input').forEach(input => input.addEventListener('input', calculate));
   document.querySelectorAll('.economics-form select').forEach(select => select.addEventListener('change', calculate));
   calculate();

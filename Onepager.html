@@ -4,8 +4,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#101e33">
-  <meta name="description" content="ComLead: пакеты встреч для выхода на новых клиентов. Go-to-market стратегия входит в первый пакет. Контакт, Вход и Закрытие: состав, стоимость и правила работы.">
-  <title>ComLead — пакеты встреч для выхода на новых клиентов</title>
+  <meta name="description" content="ComLead — запуск B2B-продаж в новом сегменте с пакета из 10 целевых встреч. Воронка в вашей CRM, стратегия, три формата работы, ставки и расчёт бюджета.">
+  <title>ComLead — рост по требованию · форматы и стоимость</title>
   <style>
     @font-face {
   font-family: 'Inter';
@@ -148,6 +148,13 @@
     .hero-terms { max-width: 1000px; margin-top: 16px; padding-left: 16px; border-left: 2px solid var(--teal); color: #c8d5e8; font-size: 13px; line-height: 1.65; }
     .hero-actions { margin-top: 24px; }
     main { padding-top: 24px; }
+    .outcomes { padding: 4px 0 24px; }
+    .outcomes > h2 { font: 400 28px/1.3 var(--serif); letter-spacing: -.025em; }
+    .outcome-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px 32px; margin: 20px 0 0; padding: 0; list-style: none; counter-reset: outcome; }
+    .outcome-list li { position: relative; padding-left: 36px; counter-increment: outcome; }
+    .outcome-list li::before { content: counter(outcome); position: absolute; left: 0; top: 0; color: #53667e; font: 400 23px/1.3 var(--serif); }
+    .outcome-list h3 { font-size: 13px; margin-bottom: 6px; }
+    .outcome-list p { font-size: 12px; line-height: 1.65; color: var(--muted); }
     .strategy-strip {
       display: flex;
       justify-content: space-between;
@@ -160,6 +167,7 @@
       color: #345b58;
     }
     .strategy-strip p { font-size: 13px; }
+    .strategy-strip p + p { margin-top: 4px; }
     .strategy-link { display: inline-flex; align-items: center; gap: 8px; font-size: 12px; white-space: nowrap; }
     .comparison {
       display: grid;
@@ -296,6 +304,10 @@
       .button { padding: 12px 16px; gap: 16px; font-size: 12px; }
       .hero-actions .button { width: 100%; max-width: 360px; }
       main { padding-top: 16px; }
+      .outcomes { padding-bottom: 20px; }
+      .outcomes > h2 { font-size: 24px; }
+      .outcome-list { grid-template-columns: 1fr; gap: 16px; }
+      .outcome-list p { font-size: 13px; }
       .strategy-strip { display: block; padding: 16px; }
       .strategy-strip p { font-size: 13px; }
       .strategy-link { margin-top: 8px; }
@@ -480,12 +492,6 @@
     .economics-form input[aria-invalid="true"] { border-color: #a23d33; }
     .economics-form small { display: block; margin-top: 6px; font-size: 11px; line-height: 1.5; color: var(--muted); }
     .economics-form .calc-warning { color: #865014; }
-    .scenario-controls { margin-top: 20px; }
-    #scenario-control-label { font-size: 12px; color: #344f6d; }
-    .scenario-switch { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
-    .scenario-switch button { min-height: 40px; padding: 9px 16px; border: 1px solid #b7c7db; border-radius: 7px; background: transparent; color: #344f6d; font: 400 12px/1.5 var(--sans); cursor: pointer; }
-    .scenario-switch button[aria-pressed="true"] { background: #35577f; border-color: #35577f; color: white; }
-    #scenario-explanation { margin-top: 8px; color: var(--muted); font-size: 11px; }
     .calc-error { margin-top: 16px; padding: 12px 16px; background: #f9eae7; border-radius: 8px; color: #8b3028; font-size: 13px; }
     .funnel-heading { display: flex; justify-content: space-between; align-items: center; gap: 16px; margin: 28px 0 16px; }
     .funnel-heading h2 { font: 400 26px/1.25 var(--serif); }
@@ -504,11 +510,11 @@
     .funnel-shape > span { font-size: 11px; }
     .shape-final { width: 76%; background: #507977; }
     .shape-paid { width: 56%; background: #6d628f; }
-    .funnel-stage, .funnel-rate, .funnel-cost { min-width: 0; }
+    .funnel-stage, .funnel-rate { min-width: 0; }
     .funnel-stage > strong { display: block; font-size: 13px; line-height: 1.5; }
     .funnel-stage > span { display: block; margin-top: 6px; color: var(--muted); font-size: 11px; }
-    .funnel-rate, .funnel-cost { text-align: right; }
-    .funnel-rate > strong, .funnel-cost > strong { font: 400 23px/1.25 var(--serif); color: #35577f; font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }
+    .funnel-rate { text-align: right; }
+    .funnel-rate > strong { font: 400 23px/1.25 var(--serif); color: #35577f; font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }
     .funnel-rate > span { display: block; margin-top: 4px; font-size: 11px; color: var(--muted); }
     .funnel-rate .mobile-metric-label, .mobile-metric-label { display: none; }
     .forecast { margin-top: 24px; padding: 24px; border: 1px solid var(--line); border-radius: 10px; background: var(--surface); }
@@ -528,7 +534,7 @@
     .economics-note { margin-top: 12px; font-size: 11px; color: var(--muted); line-height: 1.6; max-width: 100ch; }
     .workflow { margin-top: 32px; padding: 28px 0; border-bottom: 1px solid var(--line); }
     .workflow > h2 { font: 400 30px/1.25 var(--serif); letter-spacing: -.025em; }
-    .workflow-steps { display: grid; grid-template-columns: 1fr; gap: 24px; max-width: 800px; margin: 24px 0 0; padding: 0; list-style: none; counter-reset: workflow; }
+    .workflow-steps { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-rows: repeat(2, auto); grid-auto-flow: column; column-gap: 40px; row-gap: 24px; margin: 24px 0 0; padding: 0; list-style: none; counter-reset: workflow; }
     .workflow-steps li { position: relative; padding-left: 40px; counter-increment: workflow; }
     .workflow-steps li::before { content: counter(workflow); position: absolute; left: 0; top: 0; display: grid; place-items: center; width: 26px; height: 26px; border: 1px solid #c4d4e5; border-radius: 50%; color: #35577f; font-size: 12px; }
     .workflow-steps h3 { font-size: 13px; line-height: 1.5; margin-bottom: 8px; }
@@ -548,8 +554,6 @@
       .economics-inputs, .economics-money { grid-template-columns: 1fr; gap: 16px; }
       .economics-inputs > label:last-child { max-width: none; }
       .economics-form :is(input, select) { font-size: 16px; }
-      .scenario-switch { display: grid; grid-template-columns: 1fr; }
-      .scenario-switch button { text-align: left; min-height: 44px; }
       .funnel-heading { align-items: flex-start; flex-direction: column; gap: 8px; }
       .funnel-heading h2 { font-size: 24px; }
       .funnel-summary { font-size: 22px; }
@@ -563,9 +567,9 @@
       .shape-final { width: 88%; }
       .shape-paid { width: 76%; }
       .funnel-shape > span { font-size: 9px; }
-      .funnel-rate, .funnel-cost { align-self: start; }
+      .funnel-rate { align-self: start; }
       .funnel-rate { text-align: left; }
-      .funnel-rate > strong, .funnel-cost > strong { font-size: 18px; }
+      .funnel-rate > strong { font-size: 18px; }
       .funnel-rate > span { font-size: 10px; }
       .funnel-rate .mobile-metric-label, .mobile-metric-label { display: block; margin: 0 0 4px; font-size: 9px; color: #53667e; }
       .forecast { padding: 16px; }
@@ -574,7 +578,7 @@
       .forecast-row dd { margin-top: 8px; font-size: 30px; text-align: left; }
       .forecast-share { font-size: 11px; }
       .workflow { padding-top: 24px; }
-      .workflow-steps { grid-template-columns: 1fr; gap: 24px; }
+      .workflow-steps { grid-template-columns: 1fr; grid-template-rows: none; grid-auto-flow: row; gap: 24px; }
       .workflow-steps li { padding-left: 36px; }
       .workflow-steps p { font-size: 13px; }
     }
@@ -590,18 +594,466 @@
       .funnel-row { min-height: 100px; break-inside: avoid; }
       .funnel-volume { grid-row: auto; }
       .funnel-stage { grid-column: auto; }
-      .funnel-rate, .funnel-cost { text-align: right; align-self: center; }
+      .funnel-rate { text-align: right; align-self: center; }
       .funnel-rate .mobile-metric-label, .mobile-metric-label { display: none; }
       .funnel-heading, .forecast { break-inside: avoid; }
       .forecast-row { display: flex; }
       .forecast-row dt { max-width: 58%; }
       .forecast-row dd { margin-top: 0; font-size: 23pt; }
-      .workflow-steps { grid-template-columns: 1fr; gap: 20px; }
+      .workflow-steps { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-rows: repeat(2, auto); grid-auto-flow: column; gap: 20px; }
       .workflow-steps li { break-inside: avoid; }
       .workflow-steps p { font-size: 9pt; }
     }
 
-  </style>
+
+    /* Package rates and the full-cycle supplement form one visible pricing group. */
+    .labels { grid-template-rows: 72px 168px 80px 190px; }
+    .plan-fields { grid-template-rows: 168px 80px 190px; }
+    .price-terms a { text-decoration-color: #9eaec4; }
+    .detail-group { margin-top: 28px; }
+    .details > summary { font-size: 16px; }
+    .rates { table-layout: fixed; border-collapse: separate; border-spacing: 0; }
+    .segment-column { width: 28%; }
+    .contact-column { width: 21%; }
+    .primary-column { width: 23%; }
+    .opportunity-column { width: 28%; }
+    .rates thead th:not(:first-child), .rates td { white-space: normal; }
+    .rates thead th { text-align: left; }
+    .rates .rate-groups th { font-size: 13px; }
+    .rates .rate-group { background: #dcebe7; border: 1px solid #9bbdb3; border-bottom: 0; text-align: center; }
+    .rates .rate-primary { background: #eef5f2; border-left: 1px solid #9bbdb3; }
+    .rates .rate-addon { position: relative; background: #eef5f2; border-right: 1px solid #9bbdb3; padding-left: 36px; }
+    .rates tbody tr:last-child .rate-primary, .rates tbody tr:last-child .rate-addon { border-bottom: 1px solid #9bbdb3; }
+    .rates .rate-addon small { color: #345b58; }
+    .rate-plus { position: absolute; left: 6px; top: 50%; transform: translateY(-50%); color: #456f65; font-size: 20px; line-height: 1; }
+    .rates td > span:last-child { white-space: nowrap; }
+    .commission-grid { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); border: 1px solid var(--line); border-radius: 10px; overflow: hidden; background: var(--surface); }
+    .commission-cell { padding: 16px 8px; text-align: center; }
+    .commission-cell + .commission-cell { border-left: 1px solid var(--line); }
+    .commission-cell span { display: block; color: var(--muted); font-size: 11px; white-space: nowrap; }
+    .commission-cell strong { display: block; margin-top: 8px; color: #35577f; font: 400 27px/1.3 var(--serif); }
+    .commission-cell small { display: block; margin-top: 6px; font-size: 12px; color: var(--muted); font-variant-numeric: tabular-nums; white-space: nowrap; }
+    .economics > summary { font-size: 18px; }
+    .scenario-explanation { margin-top: 20px; color: var(--muted); font-size: 12px; }
+    .budget-total { border-top: 2px solid #b8c8db !important; }
+    .budget-total dd { font-weight: 600; }
+    .shape-final > span { font-size: 10px; }
+    .terms { margin-top: 32px; }
+    .terms h2, .launch h2 { font: 400 28px/1.3 var(--serif); letter-spacing: -.025em; }
+    .terms ul { margin: 16px 0 0; padding-left: 18px; color: var(--muted); font-size: 12px; line-height: 1.75; }
+    .terms li + li { margin-top: 8px; }
+    .launch { margin-top: 28px; }
+    .launch p { max-width: 78ch; margin-top: 10px; color: var(--muted); font-size: 13px; }
+    @media (min-width: 768px) and (max-width: 1050px) {
+      .labels { grid-template-rows: 72px 208px 88px 208px; }
+      .plan-fields { grid-template-rows: 208px 88px 208px; }
+      .rates th, .rates td { padding: 14px 12px; }
+      .rates .rate-addon { padding-left: 28px; }
+      .rates thead th { font-size: 11px; }
+    }
+    @media (max-width: 767px) {
+      .plan-fields { display: block; }
+      .rates .rate-primary { margin: 10px 10px 0; border: 1px solid #9bbdb3; border-bottom: 0; border-radius: 8px 8px 0 0; }
+      .rates .rate-addon { margin: 0 10px 10px; padding-left: 38px; border: 1px solid #9bbdb3; border-top: 1px solid #cfdfd9; border-radius: 0 0 8px 8px; }
+      .rates tbody tr:last-child .rate-primary { border-bottom: 0; }
+      .rates tbody tr td.rate-addon:last-child { border-bottom: 1px solid #9bbdb3; }
+      .rates td { font-size: 14px; }
+      .rates .rate-plus { left: 14px; }
+      .rate-label small { margin-top: 2px; font-size: 10px; }
+      .commission-grid { grid-template-columns: 1fr 1fr; }
+      .commission-cell { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 6px 8px; padding: 12px; border-bottom: 1px solid var(--line); }
+      .commission-cell small { grid-column: 1 / -1; text-align: left; margin: 0; }
+      .commission-cell:nth-child(odd) { border-left: 0; }
+      .commission-cell:last-child { grid-column: 1 / -1; border-bottom: 0; }
+      .commission-cell strong { margin: 0; font-size: 24px; }
+      .commission-cell span { font-size: 11px; }
+      .shape-final > span { font-size: 8px; }
+      .terms ul { font-size: 13px; }
+    }
+    @media print {
+      .outcome-list { grid-template-columns: 1fr 1fr; gap: 16px 24px; }
+      .outcome-list li { break-inside: avoid; }
+      .outcome-list p { font-size: 9pt; }
+      .labels { grid-template-rows: 54px 190px 80px 190px; }
+      .plan-fields { display: grid; grid-template-rows: 190px 80px 190px; }
+      .detail-group { margin-top: 24px; }
+      .rates .rate-primary, .rates .rate-addon { margin: 0; border-radius: 0; }
+      .rates .rate-addon { padding-left: 20px; }
+      .rates .rate-plus { left: 2px; font-size: 15px; }
+      .commission-grid { grid-template-columns: repeat(7, minmax(0, 1fr)); }
+      .commission-cell { display: block; padding: 10px 4px; border-bottom: 0; }
+      .commission-cell + .commission-cell { border-left: 1px solid var(--line); }
+      .commission-cell:last-child { grid-column: auto; }
+      .commission-cell span { font-size: 8pt; }
+      .commission-cell strong { margin-top: 6px; font-size: 17pt; }
+      .terms, .launch { break-inside: avoid; }
+    }
+
+    .compact-rows {margin:0;font-size:16px}
+    .compact-rows > div {display:grid;grid-template-columns:minmax(110px,28%) minmax(0,1fr);gap:16px;padding:11px 0;border-bottom:1px solid var(--line)}
+    .compact-rows dt {font-weight:700}
+    .compact-note {font-size:14px;margin-top:14px}
+    .details > summary {font-size:19px}
+    .plan-field,.volume,.workflow-steps p,.rates {font-size:16px}
+    .strategy-strip p,.price-note,.price-caption,.price-terms,.detail-sub,.billing-note,.scenario-explanation,.forecast-row small {font-size:14px}
+    .price-terms strong {white-space:normal}
+    .commission-cell small {margin-top:12px;font-size:14px}
+    .commission-cell span {font-size:14px}
+    .funnel-stage > strong,.forecast-row dt,.forecast-share {font-size:16px}
+    .funnel-stage > span,.funnel-rate > span {font-size:14px}
+    .rates col {width:25%}
+    .rates thead .rate-groups th:not(:first-child) {text-align:left}
+    .rates thead tr:last-child th {vertical-align:top;font-size:15px}
+    .rates thead tr:last-child th:not(:first-child),.rates td {text-align:right}
+    .rates .rate-groups td,.rates .rate-groups th {border-bottom:1px solid var(--line)}
+    .rates :is(th,td)+:is(th,td) {border-left:1px solid var(--line)}
+    .rates .rate-primary,.rates .rate-addon {padding-inline:16px}
+    .rates th.rate-addon {padding-left:26px}
+    .rates .rate-plus {left:0;transform:translate(-50%,-50%);background:#eef5f2;padding:3px;z-index:1}
+    .rates thead tr:last-child th {border-bottom:1px solid var(--line)}
+    .rates tbody :is(th,td) {border-bottom:1px solid var(--line)}
+    @media (min-width:768px) and (max-width:1050px) {
+      .labels {grid-template-rows:72px 208px 112px 230px}
+      .plan-fields {grid-template-rows:208px 112px 230px}
+      .commission-grid {grid-template-columns:repeat(4,minmax(0,1fr))}
+      .commission-cell span {white-space:normal}
+    }
+    @media(max-width:767px) {
+      .compact-rows > div {grid-template-columns:1fr;gap:2px}
+      .rates .rate-primary,.rates .rate-addon {padding-inline:12px}
+      .rates td {gap:8px}
+      .commission-cell span {white-space:normal}
+      .commission-cell small {margin-top:8px}
+    }
+    #criteria .criteria {grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}
+    #criteria .criteria > section {background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:clamp(16px,2.5vw,28px)}
+    #criteria .detail-title {font:700 19px/1.35 var(--sans);margin-bottom:12px}
+    #criteria .compact-rows > div {grid-template-columns:1fr;gap:3px;padding:10px 0}
+    #criteria .compact-rows dd {line-height:1.45;color:var(--muted)}
+    #criteria .compact-note {padding-top:4px;color:var(--muted)}
+    .rate-formula {background:#e9f2f0;border:1px solid #ccdedb;border-radius:8px;padding:14px 16px;margin-bottom:16px;color:#294f4a}
+    .rate-formula p {margin-top:4px}
+    .rate-formula b {padding-inline:3px}
+    .rates thead small {margin:0 0 6px;font-size:13px}
+    .commission-cell {display:grid;grid-template-columns:1fr;grid-template-rows:auto 1fr auto;justify-items:center;gap:14px;padding:18px 8px}
+    .commission-cell span {white-space:normal}
+    .commission-cell strong {margin:0;align-self:center;color:#35577f;font:400 27px/1.3 var(--serif);font-variant-numeric:tabular-nums}
+    .commission-cell small {grid-column:auto;width:100%;text-align:center;margin:0;border-top:1px solid var(--line);padding-top:12px;color:var(--ink);font-weight:600}
+    @media screen and (max-width:767px) {
+      #criteria .criteria {grid-template-columns:1fr;gap:16px}
+      .commission-grid {grid-template-columns:repeat(2,minmax(0,1fr))}
+    }
+    .rates thead .rate-formats td {text-align:left;font-size:13px;color:var(--muted);background:#eaf0f7;padding-block:10px}
+    .rates thead .rate-formats :is(.rate-primary,.rate-addon) {background:#eef5f2}
+    .rates thead tr:last-child th {padding-block:12px;vertical-align:top}
+/* Shared ComLead typography and surface styling. */
+.price, .funnel-summary, .funnel-shape strong,
+.funnel-rate > strong, .forecast-row dd {
+  font-family: var(--sans);
+  font-weight: 700;
+  font-style: normal;
+  font-variant-numeric: lining-nums tabular-nums;
+  letter-spacing: -.035em;
+}
+
+@media screen {
+  :root {
+    --paper: #f5f7fa;
+    --surface: #ffffff;
+    --line: #dce4ee;
+    --muted: #56677d;
+    --soft-blue: #edf3fb;
+    --soft-teal: #edf5f3;
+    --polish-shadow: 0 12px 32px -24px #10254040;
+  }
+  body { font-size: 16px; text-rendering: optimizeLegibility; }
+  ::selection { color: #101e33; background: #cbdfff; }
+  .site-header { background: #101e33f5; backdrop-filter: blur(16px); border-bottom-color: #ffffff18; }
+  .brand { color: #f0f5ff; }
+  .brand img { box-shadow: 0 0 0 1px #b3cdff12; }
+  .button {
+    min-height: 52px; font-size: 14px; border-color: #a8c9fa; border-radius: 10px;
+    box-shadow: 0 3px 7px -5px #0e213f40;
+    transition: background .18s ease, border-color .18s ease;
+  }
+  .button:hover { background: #c5daff; border-color: #c5daff; }
+  .button:active { background: #b5d0fa; }
+  .hero { padding-block: 40px; background: radial-gradient(ellipse at 90% 18%, #263e60 0, transparent 64%), #101e33; border-bottom: 1px solid #203958; }
+  .hero::before { background-image: linear-gradient(#ffffff03 1px, transparent 1px), linear-gradient(90deg, #ffffff03 1px, transparent 1px); background-size: 72px 72px; }
+  .hero h1 { color: #eef4ff; }
+  .hero h1 .nowrap { color: #aac9ff; }
+  .hero-lead { color: #ccd9ed; font-size: 17px; line-height: 1.65; max-width: 920px; }
+  .hero-terms { color: #bacce3; border-left-color: #99d2c4; font-size: 14px; line-height: 1.65; max-width: 850px; }
+  .hero .eyebrow { letter-spacing: .14em; }
+  main { padding-top: 28px; }
+
+  .strategy-strip { padding: 22px 24px; background: #edf5f2; border-color: #d0e2da; border-radius: 14px; color: #42645f; }
+  .strategy-strip p { font-size: 16px; line-height: 1.6; }
+  .strategy-strip p + p { margin-top: 6px; font-size: 14px; }
+  .strategy-strip strong { color: #2c5550; }
+  .strategy-link { font-size: 14px; text-decoration-color: #a2bdb8; text-underline-offset: 5px; }
+
+  .comparison { border-radius: 16px; border-color: #d9e2ee; box-shadow: var(--polish-shadow); }
+  .labels { background: #f0f4f9; grid-template-rows: 76px 168px 88px 212px; }
+  .label-cell { color: #60718a; font-size: 13px; }
+  .plan { background: #fff; grid-template-rows: 76px auto; }
+  .plan-fields { grid-template-rows: 168px 88px 212px; }
+  .plan-head { background: #edf3fb; }
+  .plan-entry .plan-head { background: #eaf3f0; }
+  .plan-head h2 { color: #203b5d; }
+  .plan-number { color: #647995; font-size: 12px; font-variant-numeric: tabular-nums; }
+  .plan-field { font-size: 16px; line-height: 1.55; padding-block: 22px; }
+  .plan-price { background: #f5f8fc; padding-top: 24px; }
+  .plan-entry .plan-price { background: #f4f8f6; }
+  .price { font-size: 32px; line-height: 1.2; color: #203b5d; }
+  .price__from { font-size: 14px; color: var(--muted); }
+  .price-caption { color: #60718a; font-size: 14px; margin-top: 8px; }
+  .price-terms { font-size: 14px; line-height: 1.6; margin-top: 16px; }
+  .price-terms a { text-decoration-color: #b4c5d9; text-decoration-thickness: 1px; text-underline-offset: 4px; }
+  .plan-close { color: var(--ink); border-left: 1px solid #b7d3c8; background: #fcfefd; }
+  .plan-close .plan-head { background: #deeee7; }
+  .plan-close .plan-head h2, .plan-close .price { color: #245c52; }
+  .plan-close .plan-number { color: #527b6e; }
+  .plan-close .plan-field { border-top-color: #d5e4dd; }
+  .plan-close .plan-price { background: #edf6f1; }
+  .plan-close #close-plan-example { color: #245c52; margin-top: 12px; text-decoration-color: #9dbeb3; }
+  .price-note { color: var(--muted); font-size: 14px; margin-top: 16px; }
+  .price-note a { color: #3559a3; text-decoration-color: #b3c5e2; }
+
+  .detail-group { margin-top: 36px; border-top-color: var(--line); }
+  .details { border-bottom-color: var(--line); }
+  .details > summary { font-size: 19px; padding-block: 24px; color: #2d496b; line-height: 1.45; letter-spacing: -.015em; transition: color .18s ease; }
+  .details > summary:hover { color: #3559a3; }
+  .details[open] > summary { color: #1c3555; }
+  .chevron { color: #6684a9; }
+  .details-body { padding: 8px 0 32px; }
+  .compact-rows { font-size: 16px; }
+  .compact-rows > div { padding-block: 16px; gap: 20px; border-bottom-color: #e0e7ef; }
+  .compact-rows dt { color: #314b6b; }
+  .compact-rows dd { color: var(--muted); line-height: 1.6; }
+  .compact-rows > div:last-child { border-bottom: 0; }
+  .compact-note { font-size: 14px; line-height: 1.65; color: var(--muted); }
+  #criteria .criteria { gap: 24px; }
+  #criteria .criteria > section { padding: 28px; border-color: #dce5ef; border-radius: 16px; background: white; }
+  #criteria .detail-title { color: #2d496b; font-size: 19px; letter-spacing: -.02em; line-height: 1.4; margin-bottom: 12px; }
+  #criteria .compact-rows > div { padding-block: 14px; gap: 6px; }
+  #criteria .compact-rows dd { color: var(--muted); line-height: 1.6; }
+  #criteria .compact-note { border-top: 1px solid #e0e7ef; padding-top: 20px; margin-top: 16px; }
+  .detail-sub, .billing-note { font-size: 14px; color: var(--muted); line-height: 1.65; }
+  .detail-sub { margin-bottom: 20px; }
+  .billing-note { margin-top: 20px; }
+  .rate-formula { background: #edf5f2; border-color: #d4e4df; border-radius: 12px; padding: 18px 20px; margin-bottom: 20px; color: #42635c; font-size: 15px; }
+  .rate-formula strong { color: #2c5550; }
+  .rate-formula p { margin-top: 6px; line-height: 1.7; }
+  .rate-formula b { color: #4c7b6f; }
+  .rates-wrap { border-color: #d9e3ee; border-radius: 14px; background: white; }
+  .rates col { width: 25%; }
+  .rates :is(th, td) { padding: 20px 18px; border-bottom-color: #dce5ec; }
+  .rates thead th { background: #edf3fb; color: #365270; }
+  .rates thead tr:last-child th { font-size: 15px; line-height: 1.5; vertical-align: top; padding: 14px 18px 18px; }
+  .rates thead .rate-formats td { padding: 16px 18px 10px; background: #edf3fb; color: #60728b; font-size: 14px; }
+  .rates thead .rate-formats :is(.rate-primary, .rate-addon), .rates thead :is(th.rate-primary, th.rate-addon) { background: #e9f3ef; }
+  .rates .rate-primary, .rates .rate-addon { background: #f2f8f5; border-color: #c9ddd4; padding-inline: 18px; }
+  .rates tbody tr:nth-child(even) { background: #f8fafc; }
+  .rates tbody tr:nth-child(even) :is(.rate-primary, .rate-addon) { background: #edf5f1; }
+  .rates tbody th[scope="row"] { color: #273e5b; font-size: 16px; }
+  .rates tbody td { color: #30465f; font-size: 18px; font-weight: 700; }
+  .rates :is(th, td) + :is(th, td) { border-left-color: #dce5ec; }
+  .rates tbody tr:last-child :is(.rate-primary, .rate-addon) { border-bottom-color: #c9ddd4; }
+  .rates small { color: #62748b; font-size: 13px; margin-top: 6px; }
+  .commission-grid { border-radius: 14px; border-color: #d9e3ee; background: white; }
+  .commission-cell { background: white; padding-block: 22px; gap: 18px; }
+  .commission-cell span { color: #65758a; }
+  .commission-cell small { border-top-color: #dee6ef; padding-top: 16px; }
+
+  .economics { margin-top: 28px; background: #edf2fa; border-color: #cbd9e9; border-radius: 16px; box-shadow: var(--polish-shadow); }
+  .economics > summary, .economics[open] > summary { background: #192e4b; color: #eef4ff; padding: 24px 28px; border-bottom-color: #ffffff18; }
+  .economics > summary:hover { background: #203956; color: white; }
+  .economics > summary .chevron, .economics[open] > summary .chevron { color: #b3cefa; }
+  .economics-body { padding: 28px; }
+  .economics-inputs { grid-template-columns: 1fr 1.4fr .8fr; gap: 24px; }
+  .economics-money { gap: 24px; margin-top: 24px; }
+  .economics-form label { color: #3b526f; font-size: 15px; font-weight: 700; }
+  .economics-form :is(input, select) { height: 54px; font-size: 16px; border-color: #c2d0e1; border-radius: 10px; background: white; padding-inline: 14px; box-shadow: none; transition: border-color .18s ease; }
+  .economics-form :is(input, select):hover { border-color: #8fa8ca; }
+  .economics-form :is(input, select):focus-visible { border-color: #638bc7; outline: 2px solid #7fa4dd; outline-offset: 2px; }
+  .economics-form input[aria-invalid="true"] { border-color: #a23d33; }
+  .economics-form small { color: var(--muted); font-size: 13px; font-weight: 400; margin-top: 8px; }
+  .economics-form .calc-warning { color: #865014; }
+  .scenario-explanation { color: #576e89; font-size: 14px; line-height: 1.65; margin-top: 24px; }
+  .funnel-heading { margin: 32px 0 20px; }
+  .funnel-heading h2 { color: #233f61; font: 700 20px/1.4 var(--sans); }
+  .funnel-heading p { font-size: 14px; }
+  .funnel-summary { color: #3559a3; font-size: 24px; }
+  .funnel-table { border-top: 0; }
+  .funnel-head, .funnel-row { grid-template-columns: 132px minmax(0, 1fr) 212px; gap: 24px; }
+  .funnel-head { color: #60758e; font-size: 13px; padding: 0 20px 12px; }
+  .funnel-row { background: white; border: 1px solid #d6e0ed; border-radius: 14px; padding: 20px; margin-bottom: 12px; min-height: 132px; }
+  .funnel-volume { justify-content: center; gap: 6px; }
+  .funnel-volume > small { font-size: 12px; color: #61758d; line-height: 1.3; }
+  .funnel-stage > strong { font-size: 16px; color: #2b4565; }
+  .funnel-stage > span { font-size: 14px; color: var(--muted); line-height: 1.55; }
+  .funnel-shape { background: #e6eefb; color: #3559a3; height: 80px; }
+  .funnel-shape strong { font-size: 30px; }
+  .funnel-shape > span { font-size: 12px; }
+  .shape-final { background: #e0efe8; color: #286557; }
+  .shape-final > span { font-size: 10px; }
+  .shape-paid { background: #203b5d; color: white; }
+  .funnel-rate > strong { color: #294667; font-size: 23px; line-height: 1.35; white-space: nowrap; }
+  .funnel-rate > span { font-size: 14px; line-height: 1.5; margin-top: 6px; }
+  .forecast { margin-top: 24px; padding: 26px; border-color: #d7e2ef; border-radius: 14px; background: white; }
+  .forecast h3 { color: #60738c; font-size: 13px; letter-spacing: .08em; margin-bottom: 12px; }
+  .forecast-row { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 24px; padding-block: 20px; }
+  .forecast-row dt { max-width: none; color: #2d4665; font-size: 16px; }
+  .forecast-row small { color: var(--muted); font-size: 14px; line-height: 1.6; margin-top: 8px; }
+  .forecast-row dd { font-size: 30px; line-height: 1.25; white-space: nowrap; color: #2d6260; }
+  .forecast-expenses dd { color: #294667; }
+  .budget-total { border-top-color: #b9cde6 !important; }
+  .budget-total dd { font-weight: 700; font-size: 34px; }
+  .forecast-net { border-top-color: #bfd7cf !important; }
+  .forecast-row .is-negative { color: #a23d33; }
+
+  .workflow { margin-top: 40px; padding-block: 32px; border-bottom-color: var(--line); }
+  .workflow > h2, .launch h2 { color: #203b5d; }
+  .workflow-steps { column-gap: 48px; row-gap: 28px; margin-top: 28px; }
+  .workflow-steps h3 { color: #2c4564; font-size: 16px; letter-spacing: -.015em; }
+  .workflow-steps p { color: var(--muted); font-size: 16px; line-height: 1.65; }
+  .workflow-steps li::before { color: #48658c; border-color: #ccd9ea; background: #edf3fb; }
+  .launch { margin-top: 32px; }
+  .launch p { color: var(--muted); font-size: 16px; line-height: 1.65; }
+  .contact-person { color: #2c4564; font-size: 15px; }
+  .contact-links { font-size: 14px; color: #4d6c94; }
+  .contact-links a { text-decoration-color: #bfcede; text-underline-offset: 5px; }
+  .contact-note { color: #62748b; font-size: 13px; }
+  .sticky-cta { background: #f7f9fcf5; backdrop-filter: blur(16px); }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1050px) {
+  .strategy-strip { flex-wrap: wrap; gap: 14px; }
+  .labels { grid-template-rows: 76px 208px 128px 240px; }
+  .plan-fields { grid-template-rows: 208px 128px 240px; }
+  .plan-field, .plan-head { padding-inline: 16px; }
+  .price { font-size: 27px; }
+  .price-terms, .price-caption { font-size: 13px; }
+  .rates :is(th, td), .rates .rate-primary, .rates .rate-addon { padding-inline: 14px; }
+  .rates thead tr:last-child th, .rates thead .rate-formats td { padding-inline: 14px; }
+  .rates thead tr:last-child th { font-size: 14px; }
+  .rates tbody td { font-size: 17px; }
+  #criteria .criteria > section { padding: 22px; }
+  .economics-inputs { grid-template-columns: 1fr 1.4fr; }
+  .economics-inputs > label:last-child { max-width: 240px; }
+  .funnel-head, .funnel-row { grid-template-columns: 108px minmax(0, 1fr) 165px; gap: 20px; }
+  .funnel-rate > strong { font-size: 21px; }
+  .forecast-row dd { font-size: 27px; }
+  .budget-total dd { font-size: 30px; }
+}
+
+@media screen and (min-width: 768px) and (max-width: 850px) {
+  .labels { grid-template-rows: 76px 208px 152px 240px; }
+  .plan-fields { grid-template-rows: 208px 152px 240px; }
+}
+
+@media screen and (max-width: 767px) {
+  .hero { padding-block: 28px; }
+  .hero-lead { font-size: 16px; }
+  .hero-terms { font-size: 14px; }
+  .hero .nowrap { white-space: normal; }
+  .header-mobile-link { font-size: 14px; }
+  .button { gap: 12px; }
+  main { padding-top: 20px; }
+  .strategy-strip { padding: 20px; }
+  .strategy-strip p { font-size: 16px; }
+  .strategy-link { margin-top: 14px; white-space: normal; }
+  .comparison { box-shadow: none; background: transparent; gap: 20px; }
+  .plan { box-shadow: var(--polish-shadow); border-radius: 16px; }
+  .plan-head, .plan-field { padding: 20px; }
+  .plan-fields { display: block; }
+  .plan-field { font-size: 16px; }
+  .field-label { color: #5c718e; font-size: 12px; letter-spacing: .06em; }
+  .volume { grid-template-columns: 1fr; gap: 8px; }
+  .volume dd { text-align: left; }
+  .price { font-size: 32px; }
+  .plan-close { border: 1px solid #b7d3c8; }
+  .plan-close .field-label { color: #527b6e; }
+  .price-note { margin-left: 0; }
+  .details > summary { font-size: 18px; gap: 20px; padding-block: 24px; }
+  .details-body { padding-bottom: 28px; }
+  .compact-rows > div { grid-template-columns: 1fr; gap: 6px; }
+  #criteria .criteria { gap: 16px; }
+  #criteria .criteria > section { padding: 22px 20px; }
+  #criteria .detail-title { font-size: 18px; }
+  .rate-formula { padding: 18px; }
+  .rates-wrap { background: transparent; border: 0; border-radius: 0; }
+  .rates tbody { gap: 20px; }
+  .rates tbody tr { border-color: #d9e3ee; border-radius: 14px; background: white; }
+  .rates tbody th[scope="row"] { background: #edf3fb; padding: 20px 16px; }
+  .rates tbody td, .rates .rate-primary, .rates .rate-addon { align-items: center; padding: 16px 12px; gap: 12px; font-size: 17px; }
+  .rates tbody tr td.rate-addon:last-child { border-bottom-color: #c9ddd4; }
+  .rate-label { color: #5d728d; font-size: 14px; line-height: 1.4; font-weight: 400; }
+  .rate-label small { font-size: 12px; line-height: 1.4; margin-top: 4px; }
+  .rates td > span:last-child { flex-shrink: 0; }
+  .commission-cell { padding: 20px 12px; gap: 18px; }
+  .economics > summary, .economics[open] > summary { padding: 22px 20px; }
+  .economics-body { padding: 22px 16px; }
+  .economics-inputs, .economics-money { grid-template-columns: 1fr; gap: 22px; }
+  .economics-inputs > label:last-child { grid-column: auto; max-width: none; }
+  .economics-form label { font-size: 14px; }
+  .economics-form small { font-size: 13px; }
+  .scenario-explanation { font-size: 14px; }
+  .funnel-heading { margin-top: 28px; gap: 12px; }
+  .funnel-heading h2 { font-size: 20px; }
+  .funnel-heading p { font-size: 13px; }
+  .funnel-summary { font-size: 24px; }
+  .funnel-head { position: absolute; padding: 0; }
+  .funnel-row { grid-template-columns: 72px minmax(0, 1fr); gap: 14px; padding: 18px 12px; min-height: 0; }
+  .funnel-volume { grid-column: 1; grid-row: 1 / 3; align-self: start; padding-top: 4px; }
+  .funnel-stage { grid-column: 2; }
+  .funnel-stage > strong { font-size: 15px; line-height: 1.45; }
+  .funnel-stage > span { font-size: 13px; line-height: 1.55; margin-top: 8px; }
+  .funnel-rate { grid-column: 2; text-align: left; align-self: start; }
+  .funnel-rate > strong { font-size: 21px; white-space: normal; }
+  .funnel-rate > span { font-size: 13px; }
+  .funnel-rate .mobile-metric-label { display: block; font-size: 12px; margin: 0 0 5px; }
+  .funnel-shape strong { font-size: 26px; }
+  .funnel-shape > span { font-size: 10px; }
+  .shape-final { width: 90%; }
+  .shape-final > span { font-size: 8px; }
+  .shape-paid { width: 75%; }
+  .forecast { padding: 20px 16px; }
+  .forecast h3 { font-size: 12px; }
+  .forecast-row { grid-template-columns: minmax(0, 1fr); gap: 12px; padding-block: 20px; }
+  .forecast-row dt { font-size: 16px; }
+  .forecast-row dd { text-align: left; font-size: clamp(24px, 7vw, 32px); }
+  .forecast-row small { font-size: 13px; }
+  .budget-total dd { font-size: clamp(26px, 7.5vw, 34px); }
+  .workflow { padding-block: 28px; margin-top: 28px; }
+  .workflow-steps { gap: 24px; }
+  .contact { margin-top: 24px; }
+}
+
+@media screen and (max-width: 360px) {
+  .button { font-size: 13px; }
+  .economics-body { padding-inline: 12px; }
+  .funnel-row { grid-template-columns: 64px minmax(0, 1fr); gap: 10px; padding-inline: 10px; }
+  .funnel-stage > strong { font-size: 14px; }
+  .funnel-stage > span, .funnel-rate > span { font-size: 12px; }
+  .rates tbody td, .rates .rate-primary, .rates .rate-addon { font-size: 16px; gap: 8px; padding-inline: 10px; }
+  .rate-label { font-size: 13px; }
+}
+
+@media print {
+  .funnel-head, .funnel-row { grid-template-columns: 96px minmax(0, 1fr) 130px; }
+}
+
+</style>
+
+<style id="growth-headline-style">
+.hero-subtitle { margin-top: 20px; max-width: 1000px; color: #eef4ff; font: 400 22px/1.5 var(--sans); }
+@media (max-width: 600px) {
+  .hero-subtitle { margin-top: 16px; font-size: 19px; line-height: 1.5; }
+}
+@media print { .hero-subtitle { color: #222; font-size: 13pt; } }
+</style>
 </head>
 <body id="top">
   <a class="skip" href="#formats">К форматам работы</a>
@@ -622,10 +1074,11 @@
 
   <section class="hero" aria-labelledby="page-title">
     <div class="wrap">
-      <p class="eyebrow">Рост по требованию</p>
-      <h1 id="page-title">Пакеты встреч для выхода <span class="nowrap">на новых клиентов.</span></h1>
-      <p class="hero-lead">Согласно согласованному профилю покупателя (ICP), найдём нужных людей и организуем встречи. Дальше продажи ведёт ваша команда или мы — до первой оплаты.</p>
-      <p class="hero-terms">Оплачивайте нужный объём встреч — от 10 за пакет. Покупайте следующий, когда нужны новые потенциальные клиенты. Обязательной ежемесячной оплаты нет.</p>
+      <p class="eyebrow">Форматы и стоимость</p>
+      <h1 id="page-title">Рост по требованию</h1>
+      <p class="hero-subtitle">Запускаем B2B-продажи в новых сегментах. Начните с 10 целевых встреч.</p>
+      <p class="hero-lead">В зависимости от формата назначаем встречи, проводим их или ведём переговоры до первой оплаты.</p>
+      <p class="hero-terms">Контакты, история общения и договорённости остаются в вашей CRM. Ваша команда может продолжить работу с того этапа, до которого мы дошли.</p>
       <div class="hero-actions">
         <a class="button" href="https://calink.ru/ComLead/30min" target="_blank" rel="noopener noreferrer">
           Обсудить ваш сегмент · 30&nbsp;минут
@@ -637,9 +1090,9 @@
   </section>
 
   <main class="wrap">
-    <aside class="strategy-strip" aria-label="Стратегия включена">
-      <p><strong>Разработка go-to-market стратегии входит в оплату первого пакета встреч.</strong></p>
-      <a class="strategy-link" href="#workflow">Как собираю стратегию <span aria-hidden="true">↓</span></a>
+    <aside class="strategy-strip" aria-label="Стратегия и позиционирование включены">
+      <div><p><strong>Стратегия и позиционирование входят в стартовый пакет.</strong></p><p>Определяем, кому и что предложить. Уточняем план по откликам и встречам.</p></div>
+      <a class="strategy-link" href="#workflow">Как готовим стратегию <span aria-hidden="true">↓</span></a>
     </aside>
 
     <section class="comparison" id="formats" tabindex="-1" aria-label="Сравнение форматов работы">
@@ -652,7 +1105,7 @@
       <article class="plan" aria-labelledby="contact-plan">
         <div class="plan-head"><h2 id="contact-plan">Контакт</h2> <span class="plan-number" aria-hidden="true">01</span></div>
         <dl class="plan-fields">
-          <div class="plan-field"><dt class="field-label">Что получаете</dt> <dd>Профиль покупателя (ICP), проверка ценностного предложения (UVP) и назначенные встречи с покупателями, соответствующими профилю (ICP Fit)</dd></div>
+          <div class="plan-field"><dt class="field-label">Что получаете</dt> <dd>Назначаем целевые встречи. Проводит ваша команда.</dd></div>
           <div class="plan-field volume"><dt class="field-label">Объём</dt> <dd>От 10&nbsp;назначенных встреч</dd></div>
           <div class="plan-field plan-price"><dt class="field-label">Стоимость</dt> <dd><span class="price"><span class="price__from">от</span> <span>70&nbsp;000&nbsp;₽</span></span> <span class="price-caption">за пакет</span></dd></div>
         </dl>
@@ -660,7 +1113,7 @@
       <article class="plan plan-entry" aria-labelledby="entry-plan">
         <div class="plan-head"><h2 id="entry-plan">Вход</h2> <span class="plan-number" aria-hidden="true">02</span></div>
         <dl class="plan-fields">
-          <div class="plan-field"><dt class="field-label">Что получаете</dt> <dd>Первичные discovery-встречи и демо продукта, которые проводим вместе с вами для покупателей по ICP Fit</dd></div>
+          <div class="plan-field"><dt class="field-label">Что получаете</dt> <dd>Назначаем и проводим встречи вместе. Дальше переговоры ведёт ваша команда.</dd></div>
           <div class="plan-field volume"><dt class="field-label">Объём</dt> <dd>От 10&nbsp;проведённых первичных встреч</dd></div>
           <div class="plan-field plan-price"><dt class="field-label">Стоимость</dt> <dd><span class="price"><span class="price__from">от</span> <span>120&nbsp;000&nbsp;₽</span></span> <span class="price-caption">за пакет</span></dd></div>
         </dl>
@@ -668,16 +1121,83 @@
       <article class="plan plan-close" aria-labelledby="close-plan">
         <div class="plan-head"><h2 id="close-plan">Закрытие</h2> <span class="plan-number" aria-hidden="true">03</span></div>
         <dl class="plan-fields">
-          <div class="plan-field"><dt class="field-label">Что получаете</dt> <dd>Весь цикл: от первого касания до поступления денег на ваш счёт</dd></div>
-          <div class="plan-field volume"><dt class="field-label">Объём</dt> <dd>От 10&nbsp;первичных встреч + финальные по факту</dd></div>
-          <div class="plan-field plan-price"><dt class="field-label">Стоимость</dt> <dd><span class="price">272&nbsp;000&nbsp;₽</span> <a class="price-caption" id="close-plan-example" href="#economics">по базовому сценарию 10 → 4 → 2</a><p class="price-terms">Пакет первичных встреч — на старте. Финальные встречи и комиссия — по факту.</p></dd></div>
+          <div class="plan-field"><dt class="field-label">Что получаете</dt> <dd>Проводим встречи и ведём сделки до первой оплаты.</dd></div>
+          <div class="plan-field volume"><dt class="field-label">Объём</dt> <dd>От 10&nbsp;первичных встреч + дальнейшее ведение</dd></div>
+          <div class="plan-field plan-price"><dt class="field-label">Стоимость</dt> <dd><span class="price"><span class="price__from">от</span> <span>120&nbsp;000&nbsp;₽</span></span><span class="price-caption">за стартовый пакет</span><p class="price-terms">+ подтверждённые возможности<br>+ <a href="#commission">комиссия с первой оплаты от 2%</a></p><a class="price-caption" id="close-plan-example" href="#economics">Рассчитать общий бюджет →</a></dd></div>
         </dl>
       </article>
     </section>
-    <p class="price-note">Цены «от» — для малого бизнеса. Ставка зависит от сегмента ваших покупателей. <a href="#rates">Ставки по сегментам</a></p>
+    <p class="price-note">Цены «от» — для продаж малому бизнесу. <a href="#rates">Ставки по сегментам</a></p>
 
+    <div class="detail-group">
+<details class="details" id="outcomes"><summary>Что вы получаете на каждом этапе <span class="chevron" aria-hidden="true"></span></summary><div class="details-body"><dl class="compact-rows"><div><dt>Назначение</dt><dd>Контакты, переписку и договорённости о встречах.</dd></div><div><dt>Проведение</dt><dd>Выводы о задачах и возражениях, следующие шаги.</dd></div><div><dt>Квалификация</dt><dd>Потенциальные сделки с условиями покупки и следующим шагом.</dd></div><div><dt>Закрытие</dt><dd>Первую оплату по закрытой сделке и историю переговоров.</dd></div></dl></div></details>
+<details class="details" id="criteria"><summary>Критерии целевой встречи и подтверждённой возможности <span class="chevron" aria-hidden="true"></span></summary><div class="details-body"><div class="criteria"><section><h2 class="detail-title">Целевая встреча</h2><dl class="compact-rows"><div><dt>Компания</dt><dd>Подходит по размеру, отрасли, географии и другим согласованным условиям отбора и исключениям.</dd></div><div><dt>Участник</dt><dd>Принимает решение или влияет на него и может подключить руководителя.</dd></div><div><dt>Встреча</dt><dd>Участник согласился обсудить предложение. Цель, тема и время согласованы.</dd></div></dl><p class="compact-note">Критерии согласуем до старта. В «Контакте» засчитываем назначенную встречу, во «Входе» и «Закрытии» — проведённую первичную.</p></section><section><h2 class="detail-title">Подтверждённая возможность (BANT)</h2><dl class="compact-rows"><div><dt>Потребность</dt><dd>Задача покупателя и критерии выбора.</dd></div><div><dt>Решение</dt><dd>Кто участвует и как принимают решение.</dd></div><div><dt>Бюджет</dt><dd>Сумма или порядок согласования.</dd></div><div><dt>Сроки</dt><dd>Ориентир покупки и согласованный следующий шаг.</dd></div></dl><p class="compact-note">Фиксируем подтверждение в CRM.</p></section></div></div></details>
+      <details class="details" id="rates">
+        <summary>Ставки по сегментам покупателей <span class="chevron" aria-hidden="true"></span></summary>
+        <div class="details-body">
+          <p class="detail-sub">Сегмент определяем по годовой выручке покупателя. Встречи оплачиваются пакетами по 10.</p>
+          <div class="rate-formula"><strong>Как считается «Закрытие»</strong><p>Пакет из 10 проведённых встреч <b>+</b> доплата за каждую подтверждённую возможность <b>+</b> комиссия с первой оплаты.</p></div>
+          <div class="rates-wrap">
+            <table class="rates">
+              <caption class="sr-only">Ставка за одну встречу и доплата за подтверждённую возможность по сегментам покупателей</caption>
+              <colgroup><col class="segment-column"><col class="contact-column"><col class="primary-column"><col class="opportunity-column"></colgroup>
+              <thead>
+<tr class="rate-formats"><td></td><td>Контакт</td><td class="rate-primary">Вход и Закрытие</td><td class="rate-addon">Только «Закрытие»</td></tr>
+<tr><th scope="col">Кому продаёте</th><th scope="col">За назначенную встречу</th><th scope="col" class="rate-primary">За проведённую встречу</th><th scope="col" class="rate-addon">За возможность BANT</th></tr>
+</thead>
+              <tbody>
+                <tr>
+                  <th scope="row">Малый бизнес<small>До 300 млн ₽</small></th>
+                  <td><span class="rate-label" aria-hidden="true">Контакт<small>За назначенную встречу</small></span><span>7&nbsp;000&nbsp;₽</span></td>
+                  <td class="rate-primary"><span class="rate-label" aria-hidden="true">Вход / Закрытие<small>За проведённую встречу</small></span><span>12&nbsp;000&nbsp;₽</span></td>
+                  <td class="rate-addon"><span class="rate-label" aria-hidden="true">Только «Закрытие»<small>За возможность BANT</small></span><span>18&nbsp;000&nbsp;₽</span></td>
+                </tr>
+                <tr>
+                  <th scope="row">Средний бизнес<small>От 300 млн до 3 млрд ₽</small></th>
+                  <td><span class="rate-label" aria-hidden="true">Контакт<small>За назначенную встречу</small></span><span>10&nbsp;000&nbsp;₽</span></td>
+                  <td class="rate-primary"><span class="rate-label" aria-hidden="true">Вход / Закрытие<small>За проведённую встречу</small></span><span>17&nbsp;000&nbsp;₽</span></td>
+                  <td class="rate-addon"><span class="rate-label" aria-hidden="true">Только «Закрытие»<small>За возможность BANT</small></span><span>27&nbsp;000&nbsp;₽</span></td>
+                </tr>
+                <tr>
+                  <th scope="row">Крупный бизнес<small>От 3 до 30 млрд ₽</small></th>
+                  <td><span class="rate-label" aria-hidden="true">Контакт<small>За назначенную встречу</small></span><span>14&nbsp;000&nbsp;₽</span></td>
+                  <td class="rate-primary"><span class="rate-label" aria-hidden="true">Вход / Закрытие<small>За проведённую встречу</small></span><span>24&nbsp;000&nbsp;₽</span></td>
+                  <td class="rate-addon"><span class="rate-label" aria-hidden="true">Только «Закрытие»<small>За возможность BANT</small></span><span>41&nbsp;000&nbsp;₽</span></td>
+                </tr>
+                <tr>
+                  <th scope="row">Enterprise<small>От 30 млрд ₽ или РБК-500</small></th>
+                  <td><span class="rate-label" aria-hidden="true">Контакт<small>За назначенную встречу</small></span><span>20&nbsp;000&nbsp;₽</span></td>
+                  <td class="rate-primary"><span class="rate-label" aria-hidden="true">Вход / Закрытие<small>За проведённую встречу</small></span><span>34&nbsp;000&nbsp;₽</span></td>
+                  <td class="rate-addon"><span class="rate-label" aria-hidden="true">Только «Закрытие»<small>За возможность BANT</small></span><span>61&nbsp;000&nbsp;₽</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="billing-note">Пакет назначенных встреч — отдельный формат «Контакт». В «Закрытии» назначение входит в пакет проведённых встреч.</p>
+        </div>
+      </details>
+
+      <details class="details" id="commission">
+        <summary>Комиссия с первой оплаты <span class="chevron" aria-hidden="true"></span></summary>
+        <div class="details-body">
+          <p class="detail-sub">Только в «Закрытии», с первой оплаты каждого нового покупателя.</p>
+          <div class="commission-grid">
+            <div class="commission-cell"><span>100 тыс. ₽</span><strong>10%</strong><small>10 000 ₽</small></div>
+            <div class="commission-cell"><span>500 тыс. ₽</span><strong>5%</strong><small>25 000 ₽</small></div>
+            <div class="commission-cell"><span>1 млн ₽</span><strong>4,5%</strong><small>45 000 ₽</small></div>
+            <div class="commission-cell"><span>2 млн ₽</span><strong>4%</strong><small>80 000 ₽</small></div>
+            <div class="commission-cell"><span>3 млн ₽</span><strong>3,5%</strong><small>105 000 ₽</small></div>
+            <div class="commission-cell"><span>5 млн ₽</span><strong>3%</strong><small>150 000 ₽</small></div>
+            <div class="commission-cell"><span>От 10 млн ₽</span><strong>2%</strong><small>от 200 000 ₽</small></div>
+          </div>
+          <p class="billing-note">Для промежуточных чеков ставку и сумму покажет калькулятор.</p>
+        </div>
+      </details>
+    </div>
+
+<details class="details" id="terms"><summary>Оплата и условия работы <span class="chevron" aria-hidden="true"></span></summary><div class="details-body"><dl class="compact-rows"><div><dt>На старте</dt><dd>Фиксируем ставки, срок ведения и порядок доплат. Пакет оплачивается авансом, акт — после выполнения объёма.</dd></div><div><dt>В «Закрытии»</dt><dd>Доплата один раз за каждую впервые подтверждённую возможность. Промежуточные встречи входят в ведение. Комиссия — с первой оплаты каждого нового покупателя.</dd></div><div><dt>Замены</dt><dd>Неявки и встречи вне профиля заменяем бесплатно.</dd></div><div><dt>Дальше</dt><dd>Можно купить следующий пакет, продлить ведение или продолжить переговоры по данным в CRM. Период прогноза согласуем по циклу сделки.</dd></div></dl></div></details>
     <details class="details economics" id="economics">
-      <summary>Рассчитать стоимость для вашего сегмента <span class="chevron" aria-hidden="true"></span></summary>
+      <summary>Рассчитать общий бюджет <span class="chevron" aria-hidden="true"></span></summary>
       <div class="economics-body">
         <form id="economics-form" class="economics-form">
           <div class="economics-inputs">
@@ -714,14 +1234,7 @@
               <small id="ltv-warning" class="calc-warning" hidden></small>
             </label>
           </div>
-          <div class="scenario-controls">
-            <span id="scenario-control-label">Сценарий расчёта</span>
-            <div class="scenario-switch" role="group" aria-labelledby="scenario-control-label">
-              <button type="button" id="scenario-base" aria-pressed="true">Базовый · 10 → 4 → 2</button>
-              <button type="button" id="scenario-cautious" aria-pressed="false">Осторожный · 10 → 3 → 1</button>
-            </div>
-            <p id="scenario-explanation">На каждые 10 встреч — 4 финальные и 2 первые оплаты.</p>
-          </div>
+          <p class="scenario-explanation" id="scenario-explanation">Допущение на 10 встреч: 4 возможности и 2 оплаты при чеке ниже 2 млн ₽.</p>
         </form>
         <p id="calc-error" class="calc-error" role="alert" hidden></p>
         <div id="economics-output">
@@ -729,148 +1242,70 @@
             <div><h2>Прогноз по сценарию</h2><p id="funnel-context">Сделки закрывает ваша команда</p></div>
             <span id="funnel-summary" class="funnel-summary">10 → 4 → 2</span>
           </div>
-          <div class="funnel-table" role="table" aria-label="Этапы воронки и расходы на ComLead">
+          <div class="funnel-table" role="table" aria-label="Этапы воронки и ставки">
             <div class="funnel-head" role="row">
-              <span role="columnheader">Объём</span><span role="columnheader">Этап</span><span role="columnheader">Ставка</span><span role="columnheader">Расходы на ComLead</span>
+              <span role="columnheader">Объём</span><span role="columnheader">Этап</span><span role="columnheader">Ставка</span>
             </div>
             <div class="funnel-row" role="row">
               <div class="funnel-volume" role="cell"><div class="funnel-shape shape-first"><strong id="flow-first-count">10</strong><span id="flow-first-unit">встреч</span></div></div>
               <div class="funnel-stage" role="cell"><strong id="flow-first-label">Назначенные встречи · ICP Fit</strong><span id="flow-first-note">Проводит ваша команда</span></div>
               <div class="funnel-rate" role="cell"><span class="mobile-metric-label">Ставка</span><strong id="flow-first-rate">7 000 ₽</strong><span>за встречу</span></div>
-              <div class="funnel-cost" role="cell"><span class="mobile-metric-label">ComLead</span><strong id="flow-first-cost">70 000 ₽</strong></div>
             </div>
             <div class="funnel-row" role="row">
-              <div class="funnel-volume" role="cell"><small id="flow-final-conversion">↓ 40%</small><div class="funnel-shape shape-final"><strong id="flow-final-count">4</strong><span id="flow-final-unit">встречи</span></div></div>
-              <div class="funnel-stage" role="cell"><strong>Финальные встречи · BANT</strong><span id="flow-final-note">Ваша команда согласует бюджет и оформление закупки</span></div>
+              <div class="funnel-volume" role="cell"><small id="flow-final-conversion">↓ 40%</small><div class="funnel-shape shape-final"><strong id="flow-final-count">4</strong><span id="flow-final-unit">возможности</span></div></div>
+              <div class="funnel-stage" role="cell"><strong>Подтверждённые возможности · BANT</strong><span id="flow-final-note">Ваша команда согласует бюджет и оформление закупки</span></div>
               <div class="funnel-rate" role="cell"><span class="mobile-metric-label">Ставка</span><strong id="flow-final-rate">—</strong><span id="flow-final-rate-unit">Ваша команда</span></div>
-              <div class="funnel-cost" role="cell"><span class="mobile-metric-label">ComLead</span><strong id="flow-final-cost">—</strong></div>
             </div>
             <div class="funnel-row" role="row">
               <div class="funnel-volume" role="cell"><small id="flow-paid-conversion">↓ 50%</small><div class="funnel-shape shape-paid"><strong id="flow-paid-count">2</strong><span id="flow-paid-unit">оплаты</span></div></div>
               <div class="funnel-stage" role="cell"><strong id="flow-paid-label">Закрытие сделок</strong><span id="flow-paid-note">До первой оплаты ведёт ваша команда</span></div>
               <div class="funnel-rate" role="cell"><span class="mobile-metric-label">Ставка</span><strong id="flow-paid-rate">—</strong><span id="flow-paid-rate-unit">Ваша команда</span></div>
-              <div class="funnel-cost" role="cell"><span class="mobile-metric-label">ComLead</span><strong id="flow-paid-cost">—</strong></div>
             </div>
           </div>
+          <section class="forecast budget" aria-labelledby="budget-title">
+            <h3 id="budget-title">Общий бюджет на ComLead</h3>
+            <dl>
+              <div class="forecast-row forecast-expenses"><dt>На старте<small id="start-budget-description">Пакет из 10 назначенных встреч</small></dt><dd id="start-budget">70 000 ₽</dd></div>
+              <div class="forecast-row forecast-expenses" id="before-payment-row" hidden><dt>До первой оплаты по сценарию<small>Стартовый пакет + подтверждённые возможности</small></dt><dd id="before-payment-budget">—</dd></div>
+              <div class="forecast-row forecast-expenses budget-total"><dt>Всего по сценарию<small id="expense-description">За 10 назначенных встреч</small></dt><dd id="calc-total">70 000 ₽</dd></div>
+            </dl>
+          </section>
           <section class="forecast" aria-labelledby="forecast-title" aria-live="polite" aria-atomic="true">
-            <h3 id="forecast-title">Итого по прогнозу</h3>
+            <h3 id="forecast-title">Прогноз выручки</h3>
             <dl>
               <div class="forecast-row"><dt>Первые оплаты<small id="first-revenue-formula">2 клиента × 500 000 ₽</small></dt><dd id="first-revenue">1 000 000 ₽</dd></div>
-              <div class="forecast-row forecast-expenses"><dt>Расходы на ComLead<small id="expense-description">За 10 назначенных встреч</small></dt><dd id="calc-total">70 000 ₽</dd></div>
-              <div class="forecast-row forecast-net"><dt>Выручка за 12 месяцев за вычетом расходов на ComLead<small id="year-revenue-formula">2 клиента × 1 000 000 ₽ − 70 000 ₽</small></dt><dd id="year-revenue">1 930 000 ₽</dd></div>
+              <div class="forecast-row forecast-net" id="annual-revenue-row"><dt>Выручка за год после расходов на ComLead<small>До себестоимости и прочих расходов</small><small id="year-revenue-formula">2 клиента × 1 000 000 ₽ − 70 000 ₽</small></dt><dd id="year-revenue">1 930 000 ₽</dd></div>
             </dl>
-            <p class="forecast-share">Доля затрат в годовой выручке <strong id="annual-share">3,5%</strong></p>
           </section>
-          <div class="payment-summary"><p id="budget-timing">На старте — 70 000 ₽ за 10 встреч.</p><p><strong>Разработка стратегии — 0 ₽.</strong> Входит в оплату первого пакета встреч.</p></div>
-          <p class="economics-note">В формате «Закрытие» комиссия — 40&nbsp;000&nbsp;₽ с первой оплаты каждого покупателя или 1,5% от неё, если эта сумма выше. Повторные платежи не входят в расчёт комиссии.</p>
-          <p class="economics-note">Расчёт по сценарию. Фактическое число сделок и сроки оплаты зависят от продаж. Финальные встречи проходят с частью тех же покупателей.</p>
-          <p class="economics-note">Годовая выручка уже включает первые оплаты. Расходы вашей команды, себестоимость продукта и остальные расходы в расчёт не входят.</p>
         </div>
-        <noscript><p class="calc-error">Включите JavaScript для пересчёта. Ниже показан пример для формата «Контакт» на 10 встреч в малом сегменте.</p></noscript>
+        <noscript><p class="calc-error">Включите JavaScript для пересчёта. Показан пример для формата «Контакт» на 10 встреч в малом сегменте.</p></noscript>
       </div>
     </details>
-
-
-    <div class="rules">
-      <article>
-        <h2>Что считаем первой встречей</h2>
-        <ul>
-          <li>Разговор с представителем компании, соответствующей согласованному профилю покупателя — ICP.</li>
-          <li>Участник понимает цель встречи и согласился обсудить предложение.</li>
-          <li>Контакт в базе или отправленное письмо встречей не считаются.</li>
-        </ul>
-      </article>
-      <article>
-        <h2>Оплата и правила</h2>
-        <ul>
-          <li>Пакет оплачивается на старте и закрывается актом после выполнения объёма.</li>
-          <li>Неявки и встречи вне согласованного профиля заменяем бесплатно.</li>
-          <li>Гарантируем согласованный объём квалифицированных встреч, а не факт закрытия сделки.</li>
-          <li>Ставку для вашего сегмента фиксируем в договоре до старта.</li>
-        </ul>
-      </article>
-    </div>
-
-    <div class="detail-group">
-      <details class="details" id="criteria" open>
-        <summary>Что считаем встречей: ICP Fit и BANT <span class="chevron" aria-hidden="true"></span></summary>
-        <div class="details-body">
-          <div class="criteria">
-            <section aria-labelledby="icp-heading">
-              <h2 class="detail-title" id="icp-heading">Первичная встреча · ICP Fit</h2>
-              <p class="detail-sub">Критерии для назначенной и проведённой первичной встречи согласуем до старта.</p>
-              <ul>
-                <li><strong>Компания:</strong> размер, отрасль и география соответствуют профилю.</li>
-                <li><strong>Контакт:</strong> принимает решение о покупке или влияет на него и может подключить руководителя.</li>
-                <li><strong>Интерес:</strong> понимает цель разговора; тема и время согласованы.</li>
-                <li><strong>Нет стоп-факторов:</strong> конкурент, банкротство или компания из согласованного списка исключений.</li>
-              </ul>
-              <p class="criteria-note">Назначение само по себе не считается проведённой встречей. Неявки и встречи вне профиля заменяем бесплатно.</p>
-            </section>
-            <section aria-labelledby="bant-heading">
-              <h2 class="detail-title" id="bant-heading">Финальная встреча · BANT</h2>
-              <p class="detail-sub">Квалификация по содержанию встречи, а не по её порядковому номеру.</p>
-              <ul>
-                <li><strong>Бюджет:</strong> подтверждена сумма или согласован порядок её утверждения.</li>
-                <li><strong>Полномочия:</strong> известны участники закупки и тот, кто принимает решение.</li>
-                <li><strong>Потребность:</strong> определены задача покупателя и критерии выбора решения.</li>
-                <li><strong>Срок:</strong> согласованы сроки выбора, закупки и начала работы.</li>
-              </ul>
-              <p class="criteria-note">Фиксируем договорённости и переход к оформлению закупки: следующий шаг, ответственного и дату. Невыясненный пункт не отмечаем как подтверждённый.</p>
-            </section>
-          </div>
-        </div>
-      </details>
-
-      <details class="details" id="rates">
-        <summary>Ставки по сегментам покупателей <span class="chevron" aria-hidden="true"></span></summary>
-        <div class="details-body">
-          <p class="detail-sub">Сегмент — годовая выручка компаний, которым вы продаёте. Все ставки указаны за одну встречу.</p>
-          <div class="rates-wrap">
-            <table class="rates">
-              <caption class="sr-only">Стоимость одной встречи по сегментам покупателей</caption>
-              <thead><tr><th scope="col">Кому продаёте</th><th scope="col">Назначенная</th><th scope="col">Проведённая</th><th scope="col">Финальная · BANT</th></tr></thead>
-              <tbody>
-                <tr><th scope="row">Малый бизнес <small>До 300&nbsp;млн&nbsp;₽</small></th><td><span class="rate-label" aria-hidden="true">Назначенная</span> <span>7&nbsp;000&nbsp;₽</span></td><td><span class="rate-label" aria-hidden="true">Проведённая</span> <span>12&nbsp;000&nbsp;₽</span></td><td><span class="rate-label" aria-hidden="true">Финальная · BANT</span> <span>18&nbsp;000&nbsp;₽</span></td></tr>
-                <tr><th scope="row">Средний бизнес <small>300&nbsp;млн – 3&nbsp;млрд&nbsp;₽</small></th><td><span class="rate-label" aria-hidden="true">Назначенная</span> <span>10&nbsp;000&nbsp;₽</span></td><td><span class="rate-label" aria-hidden="true">Проведённая</span> <span>17&nbsp;000&nbsp;₽</span></td><td><span class="rate-label" aria-hidden="true">Финальная · BANT</span> <span>27&nbsp;000&nbsp;₽</span></td></tr>
-                <tr><th scope="row">Крупный бизнес <small>3–30&nbsp;млрд&nbsp;₽</small></th><td><span class="rate-label" aria-hidden="true">Назначенная</span> <span>14&nbsp;000&nbsp;₽</span></td><td><span class="rate-label" aria-hidden="true">Проведённая</span> <span>24&nbsp;000&nbsp;₽</span></td><td><span class="rate-label" aria-hidden="true">Финальная · BANT</span> <span>41&nbsp;000&nbsp;₽</span></td></tr>
-                <tr><th scope="row">Enterprise <small>От 30&nbsp;млрд&nbsp;₽ / РБК-500</small></th><td><span class="rate-label" aria-hidden="true">Назначенная</span> <span>20&nbsp;000&nbsp;₽</span></td><td><span class="rate-label" aria-hidden="true">Проведённая</span> <span>34&nbsp;000&nbsp;₽</span></td><td><span class="rate-label" aria-hidden="true">Финальная · BANT</span> <span>61&nbsp;000&nbsp;₽</span></td></tr>
-              </tbody>
-            </table>
-          </div>
-          <div class="billing-note">
-            <p>Назначение уже включено в стоимость проведённой первичной встречи — эти ставки не складываются. Объём покупаете пакетами по 10&nbsp;встреч: 10, 20, 30…</p>
-            <p>В формате «Закрытие» первичные встречи оплачиваете пакетом на старте. Финальные встречи и комиссию — отдельно, по факту.</p>
-          </div>
-        </div>
-      </details>
-
-    </div>
 
     <section class="workflow" id="workflow" aria-labelledby="workflow-title">
       <h2 id="workflow-title">Как работаем</h2>
       <ol class="workflow-steps">
         <li>
           <h3>Создаём рабочий чат в Telegram</h3>
-          <p>Вы отвечаете голосом на мои вопросы о продукте, рынке и покупателях. Запрашиваю маркетинговые материалы, историю сделок и переговоров, переписку, данные из CRM и записи встреч и звонков. <strong>Всё под NDA.</strong></p>
+          <p>Обсуждаем продукт и покупателей. Изучаем материалы, CRM, переписку и записи встреч. <strong>Всё под NDA.</strong></p>
         </li>
         <li>
-          <h3>Готовлю стратегию выхода на рынок</h3>
-          <p>Определяю идеальный профиль клиента (ICP), уникальное ценностное предложение (UVP) и уникальное торговое предложение (USP). Выбираю каналы, по которым будем искать покупателей и выходить с ними на связь.</p>
+          <h3>Готовим стратегию и позиционирование</h3>
+          <p>Определяем профиль покупателя, предложение и каналы выхода.</p>
         </li>
         <li>
-          <h3>Оцениваю доступный рынок</h3>
-          <p>Смотрю, сколько компаний подходят под профиль, до скольких участников закупки можно дойти и какой объём контактов и касаний планировать для первых 10 встреч.</p>
+          <h3>Оцениваем доступный рынок</h3>
+          <p>Оцениваем число подходящих компаний и объём обращений на первые 10 встреч.</p>
         </li>
         <li>
-          <h3>Запускаю продажи</h3>
-          <p>Начинаю диалоги и назначаю целевые встречи. Дальше передаю их вашей команде, провожу первичные встречи вместе с вами или веду переговоры до первой оплаты — по выбранному формату.</p>
+          <h3>Запускаем продажи</h3>
+          <p>Назначаем встречи, работаем до выбранного этапа и уточняем план по откликам.</p>
         </li>
       </ol>
-      <p class="workflow-included">Разработка go-to-market стратегии входит в оплату первого пакета встреч.</p>
     </section>
 
 
+    <section class="launch" aria-labelledby="launch-title"><h2 id="launch-title">Обсудить запуск</h2><p>На первой встрече определим, кому вы хотите продавать, с каким предложением выйти и какой формат подойдёт для старта.</p></section>
     <footer class="contact">
       <div class="contact-person">
         <strong>Сергей Солодянкин · ComLead</strong>
@@ -951,7 +1386,7 @@
     small: { appointed: 7000, primary: 12000, final: 18000, minLtv: 1000000, minCheck: 100000 },
     medium: { appointed: 10000, primary: 17000, final: 27000, minLtv: 1000000, minCheck: 100000 },
     large: { appointed: 14000, primary: 24000, final: 41000, minLtv: 1000000, minCheck: 100000 },
-    enterprise: { appointed: 20000, primary: 34000, final: 61000, minLtv: 1000000, minCheck: 500000 }
+    enterprise: { appointed: 20000, primary: 34000, final: 61000, minLtv: 1000000, minCheck: 100000 }
   };
   const rub = value => new Intl.NumberFormat('ru-RU', { maximumFractionDigits: 0 }).format(value) + ' ₽';
   const percent = value => new Intl.NumberFormat('ru-RU', { maximumFractionDigits: 1 }).format(value) + '%';
@@ -989,15 +1424,35 @@
     input.addEventListener('input', () => formatMoneyInput(input));
     formatMoneyInput(input);
   });
-  const commissionAmount = check => Math.max(40000, check * 0.015);
+  const commissionScale = [
+    { check: 100000, rate: 0.10 },
+    { check: 500000, rate: 0.05 },
+    { check: 1000000, rate: 0.045 },
+    { check: 2000000, rate: 0.04 },
+    { check: 3000000, rate: 0.035 },
+    { check: 5000000, rate: 0.03 },
+    { check: 10000000, rate: 0.02 }
+  ];
+  function commissionAmount(check) {
+    if (check <= commissionScale[0].check) return check * commissionScale[0].rate;
+    const lastPoint = commissionScale[commissionScale.length - 1];
+    if (check >= lastPoint.check) return check * lastPoint.rate;
+    const upperIndex = commissionScale.findIndex(point => point.check >= check);
+    const lower = commissionScale[upperIndex - 1];
+    const upper = commissionScale[upperIndex];
+    const position = (check - lower.check) / (upper.check - lower.check);
+    // Interpolate the fee amount to preserve a continuous, increasing commission.
+    const lowerFee = lower.check * lower.rate;
+    const upperFee = upper.check * upper.rate;
+    return lowerFee + position * (upperFee - lowerFee);
+  }
   const count = value => new Intl.NumberFormat('ru-RU', { maximumFractionDigits: 2 }).format(value);
   const word = (number, forms) => forms[number % 100 >= 11 && number % 100 <= 14 ? 2 : number % 10 === 1 ? 0 : number % 10 >= 2 && number % 10 <= 4 ? 1 : 2];
   const formatDescriptions = {
     appointed: 'Назначаем встречи. Проводит ваша команда.',
     primary: 'Назначаем и проводим первичные встречи вместе с вами.',
-    full: 'Ведём весь цикл до первой оплаты.'
+    full: 'Формируем воронку и ведём переговоры до первой оплаты.'
   };
-  let scenario = 'base';
 
   function calculate() {
     const format = byId('calc-format').value;
@@ -1016,7 +1471,7 @@
 
     const warnings = {
       'check-warning': rate && checkValid && check < rate.minCheck ? 'Ниже ориентира для выбранного сегмента — ' + rub(rate.minCheck) + '. Обсудим экономику и формат.' : '',
-      'ltv-warning': checkValid && ltv > 0 && ltv < check ? 'Годовой LTV включает первый чек и не может быть меньше него.' : rate && ltvValid && ltv < rate.minLtv ? 'Ниже целевого годового LTV — ' + rub(rate.minLtv) + '. Обсудим экономику.' : ''
+      'ltv-warning': !Number.isFinite(ltv) || ltv <= 0 ? 'Укажите годовой LTV, чтобы увидеть прогноз за 12 месяцев.' : checkValid && ltv < check ? 'Годовой LTV включает первый чек. Укажите не меньше ' + rub(check) + '.' : rate && ltvValid && ltv < rate.minLtv ? 'Ниже целевого годового LTV — ' + rub(rate.minLtv) + '. Обсудим экономику.' : ''
     };
     for (const [id, message] of Object.entries(warnings)) {
       set(id, message);
@@ -1026,78 +1481,67 @@
     let error = '';
     if (!rate || !Object.hasOwn(formatDescriptions, format)) error = 'Выберите формат и сегмент.';
     else if (!meetingsValid) error = 'Укажите количество встреч, кратное 10. Например, 10, 20 или 30.';
-    else if (!checkValid || !Number.isFinite(ltv) || ltv <= 0) error = 'Укажите положительный первый чек и годовой LTV.';
-    else if (!ltvValid) error = 'Годовой LTV включает первый чек и не может быть меньше него.';
-    else if (meetings * Math.max(check, ltv) > Number.MAX_SAFE_INTEGER) error = 'Значения слишком велики для точного расчёта. Уменьшите объём или суммы.';
+    else if (!checkValid) error = 'Укажите положительную сумму первой оплаты.';
+    else if (meetings * Math.max(check, ltvValid ? ltv : check) > Number.MAX_SAFE_INTEGER) error = 'Значения слишком велики для точного расчёта. Уменьшите объём или суммы.';
     byId('calc-error').hidden = !error;
     set('calc-error', error);
     byId('economics-output').hidden = Boolean(error);
     if (error) return;
 
     const packages = meetings / 10;
-    const finals = packages * (scenario === 'base' ? 4 : 3);
-    const deals = packages * (scenario === 'base' ? 2 : 1);
+    const cautious = check >= 2000000;
+    const opportunities = packages * (cautious ? 3 : 4);
+    const deals = packages * (cautious ? 1 : 2);
     const unit = format === 'appointed' ? rate.appointed : rate.primary;
     const base = meetings * unit;
     const feePerDeal = commissionAmount(check);
-    const finalCost = full ? finals * rate.final : 0;
+    const qualificationCost = full ? opportunities * rate.final : 0;
     const feeCost = full ? deals * feePerDeal : 0;
-    const total = base + finalCost + feeCost;
+    const beforePayment = base + qualificationCost;
+    const total = beforePayment + feeCost;
     const firstRevenue = deals * check;
     const annualRevenue = deals * ltv;
     const clients = count(deals) + ' ' + (Number.isInteger(deals) ? word(deals, ['клиент', 'клиента', 'клиентов']) : 'клиента');
 
-    set('funnel-context', full ? 'Веду переговоры до первой оплаты' : 'Сделки закрывает ваша команда');
-    set('funnel-summary', meetings + ' → ' + finals + ' → ' + count(deals));
+    set('scenario-explanation', cautious ? 'Допущение на 10 встреч: 3 возможности и 1 оплата при чеке от 2 млн ₽.' : 'Допущение на 10 встреч: 4 возможности и 2 оплаты при чеке ниже 2 млн ₽.');
+    set('funnel-context', full ? 'Ведём переговоры до первой оплаты' : 'Сделки закрывает ваша команда');
+    set('funnel-summary', meetings + ' → ' + opportunities + ' → ' + count(deals));
     set('flow-first-count', count(meetings));
     set('flow-first-unit', word(meetings, ['встреча', 'встречи', 'встреч']));
     set('flow-first-label', format === 'appointed' ? 'Назначенные встречи · ICP Fit' : 'Первичные встречи · ICP Fit');
-    set('flow-first-note', format === 'appointed' ? 'Проводит ваша команда' : 'Назначаю и провожу вместе с вами');
+    set('flow-first-note', format === 'appointed' ? 'Проводит ваша команда' : 'Назначаем и проводим вместе с вами');
     set('flow-first-rate', rub(unit));
-    set('flow-first-cost', rub(base));
-    set('flow-final-count', count(finals));
-    set('flow-final-unit', word(finals, ['встреча', 'встречи', 'встреч']));
-    set('flow-final-conversion', '↓ ' + percent(finals / meetings * 100));
-    set('flow-final-note', full ? 'Подтверждены бюджет, полномочия, потребность и срок закупки' : 'Ваша команда согласует бюджет и оформление закупки');
+    set('flow-final-count', count(opportunities));
+    set('flow-final-unit', word(opportunities, ['возможность', 'возможности', 'возможностей']));
+    set('flow-final-conversion', '↓ ' + percent(opportunities / meetings * 100));
+    set('flow-final-note', full ? 'Критерии BANT и следующий шаг зафиксированы в CRM. Оплата один раз за возможность.' : 'Квалификацию и дальнейшие переговоры ведёт ваша команда');
     set('flow-final-rate', full ? rub(rate.final) : '—');
-    set('flow-final-rate-unit', full ? 'за встречу' : 'Ваша команда');
-    set('flow-final-cost', full ? rub(finalCost) : '—');
+    set('flow-final-rate-unit', full ? 'за возможность' : 'Ваша команда');
     set('flow-paid-count', count(deals));
     set('flow-paid-unit', Number.isInteger(deals) ? word(deals, ['оплата', 'оплаты', 'оплат']) : 'оплаты');
-    set('flow-paid-conversion', '↓ ' + percent(deals / finals * 100));
+    set('flow-paid-conversion', '↓ ' + percent(deals / opportunities * 100));
     set('flow-paid-label', full ? 'Комиссия с первых оплат' : 'Закрытие сделок');
     set('flow-paid-note', full ? 'Только с первого чека каждого покупателя' : 'До первой оплаты ведёт ваша команда');
     set('flow-paid-rate', full ? rub(feePerDeal) : '—');
     set('flow-paid-rate-unit', full ? 'с первой оплаты · ' + percent(feePerDeal / check * 100) + ' чека' : 'Ваша команда');
-    set('flow-paid-cost', full ? rub(feeCost) : '—');
     set('first-revenue', rub(firstRevenue));
     set('first-revenue-formula', clients + ' × ' + rub(check));
+    set('start-budget', rub(base));
+    set('start-budget-description', 'За ' + meetings + (format === 'appointed' ? ' назначенных встреч' : ' проведённых первичных встреч'));
+    byId('before-payment-row').hidden = !full;
+    set('before-payment-budget', rub(beforePayment));
     set('calc-total', rub(total));
-    set('expense-description', full ? 'Первичные + финальные встречи + комиссия' : 'За ' + meetings + (format === 'appointed' ? ' назначенных встреч' : ' проведённых первичных встреч'));
-    set('year-revenue', rub(annualRevenue - total));
-    set('year-revenue-formula', clients + ' × ' + rub(ltv) + ' LTV − ' + rub(total) + ' на ComLead');
+    set('expense-description', full ? 'Пакет встреч + подтверждённые возможности + комиссия' : 'Оплата выбранного объёма встреч');
+    byId('annual-revenue-row').hidden = !ltvValid;
+    set('year-revenue', ltvValid ? rub(annualRevenue - total) : '—');
+    set('year-revenue-formula', ltvValid ? clients + ' × ' + rub(ltv) + ' LTV − ' + rub(total) + ' на ComLead' : '');
     byId('year-revenue').classList.toggle('is-negative', annualRevenue - total < 0);
-    set('annual-share', percent(total / annualRevenue * 100));
-    set('budget-timing', 'На старте — ' + rub(base) + ' за ' + meetings + ' встреч.' + (full ? ' Финальные встречи и комиссия оплачиваются по факту. В этом сценарии — ещё ' + rub(finalCost + feeCost) + '.' : ''));
   }
 
-  function selectScenario(value) {
-    scenario = value;
-    byId('scenario-base').setAttribute('aria-pressed', String(value === 'base'));
-    byId('scenario-cautious').setAttribute('aria-pressed', String(value === 'cautious'));
-    set('scenario-explanation', value === 'base' ? 'На каждые 10 встреч — 4 финальные и 2 первые оплаты.' : 'На каждые 10 встреч — 3 финальные и 1 первая оплата.');
-    calculate();
-  }
   byId('economics-form').addEventListener('submit', event => event.preventDefault());
-  byId('scenario-base').addEventListener('click', () => selectScenario('base'));
-  byId('scenario-cautious').addEventListener('click', () => selectScenario('cautious'));
   byId('close-plan-example').addEventListener('click', () => {
     byId('calc-format').value = 'full';
-    byId('calc-segment').value = 'small';
-    byId('calc-meetings').value = '10';
-    byId('calc-check').value = '500 000';
-    byId('calc-ltv').value = '1 000 000';
-    selectScenario('base');
+    calculate();
   });
   document.querySelectorAll('.economics-form input').forEach(input => input.addEventListener('input', calculate));
   document.querySelectorAll('.economics-form select').forEach(select => select.addEventListener('change', calculate));
